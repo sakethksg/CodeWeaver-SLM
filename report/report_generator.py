@@ -92,7 +92,7 @@ class ReportGenerator:
         header = (
             "## 1. Summary Table\n\n"
             "| Dataset | pass@1 | pass@5 | pass@10 | "
-            "pass@10 (after repair) | Oracle pass@k | Avg Score |"
+            "pass@10 (after repair) | Oracle solve rate | Avg Score |"
         )
         separator = "|---------|--------|--------|---------|" \
                      "-----------------------|---------------|-----------|"
@@ -101,13 +101,13 @@ class ReportGenerator:
         for ds_name, ds_data in ds_results.items():
             before = ds_data.get("pass_at_k_before_repair", {})
             after = ds_data.get("pass_at_k_after_repair", {})
-            oracle = ds_data.get("oracle_pass_at_k", {})
+            oracle_upper = ds_data.get("oracle_upper_bound", 0)
             
             p1 = before.get("pass@1", 0)
             p5 = before.get("pass@5", 0)
             p10 = before.get("pass@10", 0)
             p10_repair = after.get("pass@10", 0)
-            oracle_k = oracle.get("pass@10", 0)
+            oracle_k = oracle_upper
             avg = ds_data.get("avg_score", 0)
             
             rows.append(
@@ -120,13 +120,13 @@ class ReportGenerator:
         repair_pass = self.agents.get("repair_analysis", {}).get(
             "pass_at_k_after_repair", {}
         )
-        oracle_pass = oracle_results.get("oracle_pass_at_k", {})
+        oracle_upper = self.agents.get("oracle_analysis", {}).get("oracle_pass_at_1", 0)
         
         agg_p1 = gen_pass.get("pass@1", 0)
         agg_p5 = gen_pass.get("pass@5", 0)
         agg_p10 = gen_pass.get("pass@10", 0)
         agg_p10r = repair_pass.get("pass@10", 0)
-        agg_oracle = oracle_pass.get("pass@10", 0)
+        agg_oracle = oracle_upper
         agg_avg = gen_results.get("avg_test_pass_rate", 0)
         
         rows.append(

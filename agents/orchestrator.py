@@ -167,8 +167,10 @@ class OrchestratorAgent(BaseAgent):
         repair_input_tokens = 0
         repair_output_tokens = 0
         
+        # Slot semantics: each initial candidate index defines one slot.
+        slot_success = [r.passed for r in initial_results]
         current_failures = [
-            (candidates[i], initial_results[i])
+            (i, candidates[i], initial_results[i])
             for i in range(len(candidates))
             if not initial_results[i].passed
         ]
@@ -177,7 +179,7 @@ class OrchestratorAgent(BaseAgent):
             if not current_failures:
                 break
             
-            repaired_codes, repair_stats = repair_candidates(
+            repaired_codes, repair_slot_indices, repair_stats = repair_candidates(
                 current_failures, problem,
                 repair_rounds=1,
                 fixes_per_failure=self.config.fixes_per_failure,
@@ -202,19 +204,29 @@ class OrchestratorAgent(BaseAgent):
             exec_time_repair = time.perf_counter() - exec_start
             exec_time_initial += exec_time_repair
             
-            fixed_count = sum(1 for r in repair_results if r.passed)
+            attempted_slots = len({slot_idx for slot_idx, _, _ in current_failures})
+            fixed_slots_this_round = set()
+            for i, r in enumerate(repair_results):
+                slot_idx = repair_slot_indices[i]
+                if r.passed and not slot_success[slot_idx]:
+                    fixed_slots_this_round.add(slot_idx)
+                if r.passed:
+                    slot_success[slot_idx] = True
+
             per_round_stats.append({
                 "round": round_idx + 1,
-                "candidates_fixed": fixed_count,
-                "candidates_attempted": len(current_failures),
+                "candidates_fixed": len(fixed_slots_this_round),
+                "candidates_attempted": attempted_slots,
             })
             
             for i, r in enumerate(repair_results):
+                slot_idx = repair_slot_indices[i]
                 if r.passed:
                     for err in self.all_errors:
                         if (err["task_id"] == task_id
                                 and not err["was_repaired"]
-                                and err["stage"] == "generation"):
+                                and err["stage"] == "generation"
+                                and err.get("candidate_index") == slot_idx):
                             err["was_repaired"] = True
                             break
                 else:
@@ -225,7 +237,7 @@ class OrchestratorAgent(BaseAgent):
                         "error_message": r.error_message[:200],
                         "was_repaired": False,
                         "stage": f"repair_round_{round_idx + 1}",
-                        "candidate_index": i,
+                        "candidate_index": slot_idx,
                     })
             
             all_repaired.extend(repaired_codes)
@@ -233,19 +245,19 @@ class OrchestratorAgent(BaseAgent):
             all_exec_results.extend([r.to_dict() for r in repair_results])
             
             current_failures = [
-                (repaired_codes[i], repair_results[i])
+                (repair_slot_indices[i], repaired_codes[i], repair_results[i])
                 for i in range(len(repaired_codes))
-                if not repair_results[i].passed
+                if not repair_results[i].passed and not slot_success[repair_slot_indices[i]]
             ]
         
         # ── Step 4: Aggregate results ──
-        num_fixed_by_repair = sum(1 for r in all_repair_results if r.passed)
-        num_correct_after = num_correct_before + num_fixed_by_repair
+        num_correct_after = sum(1 for ok in slot_success if ok)
+        num_fixed_by_repair = num_correct_after - num_correct_before
         
         all_candidates = candidates + all_repaired
         all_results_combined = initial_results + all_repair_results
-        num_correct_total = sum(1 for r in all_results_combined if r.passed)
-        any_passed = num_correct_total > 0
+        num_correct_total = num_correct_after
+        any_passed = num_correct_after > 0
         
         # ── Step 5: Rank and select ──
         ranked = rank_candidates(all_candidates, all_results_combined)

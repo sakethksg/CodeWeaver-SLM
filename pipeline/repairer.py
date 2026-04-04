@@ -28,7 +28,9 @@ def _build_repair_prompt(
     
     error_desc = {
         ErrorType.SYNTAX: "Syntax Error",
-        ErrorType.RUNTIME: "Runtime Error",
+        ErrorType.RUNTIME_TYPE: "Runtime Type Error",
+        ErrorType.RUNTIME_VALUE: "Runtime Value Error",
+        ErrorType.RUNTIME_RESOURCE: "Runtime Resource Error",
         ErrorType.LOGICAL: "Logical Error (test assertion failed)",
         ErrorType.TIMEOUT: "Timeout (execution took too long)",
     }.get(error_info.error_type, "Unknown Error")
@@ -45,24 +47,24 @@ def _build_repair_prompt(
 
 
 def repair_candidates(
-    failed_candidates: List[Tuple[str, ExecutionResult]],
+    failed_candidates: List[Tuple[int, str, ExecutionResult]],
     problem: Dict,
     repair_rounds: int = None,
     fixes_per_failure: int = None,
     client: OpenAI = None,
-) -> Tuple[List[str], Dict]:
+) -> Tuple[List[str], List[int], Dict]:
     """
     Repair failed candidates through structured error-guided repair.
     
     Args:
-        failed_candidates: List of (code, ExecutionResult) tuples for failures
+        failed_candidates: List of (slot_index, code, ExecutionResult) tuples for failures
         problem: The original problem dict
         repair_rounds: Number of repair iterations (default: CONFIG.repair_rounds)
         fixes_per_failure: Repair candidates per failure (default: CONFIG.fixes_per_failure)
         client: OpenAI client
     
     Returns:
-        Tuple of (list of repaired code strings, repair_stats dict)
+        Tuple of (list of repaired code strings, list of slot indices, repair_stats dict)
     """
     if repair_rounds is None:
         repair_rounds = CONFIG.repair_rounds
@@ -75,6 +77,7 @@ def repair_candidates(
         )
     
     all_repairs = []
+    all_slot_indices = []
     round_stats = []
     total_time = 0.0
     total_input_tokens = 0
@@ -87,7 +90,7 @@ def repair_candidates(
         round_start = time.perf_counter()
         round_repairs = []
         
-        for code, error_result in current_failures:
+        for slot_index, code, error_result in current_failures:
             system_msg, user_msg = _build_repair_prompt(code, error_result, problem)
             
             try:
@@ -111,6 +114,7 @@ def repair_candidates(
                             if not repaired.strip().startswith("def "):
                                 repaired = problem["prompt"] + repaired
                         round_repairs.append(repaired)
+                        all_slot_indices.append(slot_index)
                 
                 if response.usage:
                     total_input_tokens += response.usage.prompt_tokens
@@ -144,4 +148,4 @@ def repair_candidates(
         "output_tokens": total_output_tokens,
     }
     
-    return all_repairs, stats
+    return all_repairs, all_slot_indices, stats

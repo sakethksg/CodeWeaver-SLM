@@ -2,7 +2,7 @@
 Agent 8: Dataset Analysis Agent
 
 Provides per-dataset (HumanEval, MBPP) breakdown of all key metrics.
-Validates: after_repair >= before_repair, oracle >= after_repair.
+Validates: after_repair >= before_repair, oracle_upper_bound >= pass@1_after.
 Does NOT compute an "overall" row (Orchestrator's responsibility).
 
 Output schema matches DATASET_ANALYSIS_PROMPT exactly.
@@ -28,8 +28,7 @@ class DatasetAnalysisAgent(BaseAgent):
         Analyze per-dataset performance with validation.
         
         Input: {"problems": [{task_id, dataset, num_candidates, num_correct_before_repair,
-                num_correct_after_repair, num_candidates_total, num_correct_total,
-                any_candidate_passed, test_pass_rates}]}
+            num_correct_after_repair, any_candidate_passed, test_pass_rates}]}
         """
         self.anomalies = []  # reset
         problems = data.get("problems", [])
@@ -64,31 +63,28 @@ class DatasetAnalysisAgent(BaseAgent):
                 key_c="num_correct_after_repair",
             )
             
-            # ── Oracle pass@k ──
-            oracle_pass = self.compute_pass_at_k_for_problems(
-                ds_problems, k_values,
-                key_n="num_candidates_total",
-                key_c="num_correct_total",
+            # ── Oracle solve-rate upper bound ──
+            oracle_solved = sum(
+                1 for p in ds_problems if p.get("any_candidate_passed", False)
             )
+            oracle_upper_bound = self.safe_div(oracle_solved, len(ds_problems))
             
             # ── Validate invariants per dataset ──
             for k in k_values:
                 b = pass_before.get(k, 0)
                 a = pass_after.get(k, 0)
-                o = oracle_pass.get(k, 0)
+                o = oracle_upper_bound
                 
                 err = self.validate_upper_bound(a, b, f"{ds_name} pass@{k}_after", f"{ds_name} pass@{k}_before")
                 if err:
                     self.flag_anomaly(err)
                 
-                err2 = self.validate_upper_bound(o, a, f"{ds_name} oracle_pass@{k}", f"{ds_name} pass@{k}_after")
+                if k != 1:
+                    continue
+
+                err2 = self.validate_upper_bound(o, a, f"{ds_name} oracle_upper_bound", f"{ds_name} pass@{k}_after")
                 if err2:
                     self.flag_anomaly(err2)
-            
-            # ── Oracle solve rate ──
-            oracle_solved = sum(
-                1 for p in ds_problems if p.get("any_candidate_passed", False)
-            )
             
             # ── Average score (test pass rate) ──
             all_rates = []
@@ -106,9 +102,7 @@ class DatasetAnalysisAgent(BaseAgent):
                 "pass_at_k_after_repair": {
                     f"pass@{k}": v for k, v in pass_after.items()
                 },
-                "oracle_pass_at_k": {
-                    f"pass@{k}": v for k, v in oracle_pass.items()
-                },
+                "oracle_upper_bound": oracle_upper_bound,
                 "oracle_solve_rate": self.safe_div(
                     oracle_solved, len(ds_problems)
                 ) * 100,
