@@ -31,7 +31,7 @@ def _download_mbpp() -> str:
 
 def _build_prompt(problem: Dict) -> str:
     """Build a code generation prompt from MBPP problem description."""
-    text = problem["text"]
+    text = problem.get("prompt", problem.get("text", ""))
     # Include the first test case as an example
     test_examples = problem.get("test_list", [])
     example_str = ""
