@@ -241,8 +241,62 @@ def execute_code_batch(
     entry_point: str = "",
     timeout: float = 5.0,
 ) -> List[ExecutionResult]:
-    """Execute multiple code candidates against the same tests."""
+    """Execute multiple code candidates against the same tests (sequential)."""
     return [
         execute_code(code, test_code, entry_point, timeout)
         for code in codes
     ]
+
+
+def execute_code_batch_parallel(
+    codes: List[str],
+    test_code: str,
+    entry_point: str = "",
+    timeout: float = 5.0,
+    max_workers: int = 4,
+) -> List[ExecutionResult]:
+    """
+    Execute multiple code candidates in parallel using ThreadPoolExecutor.
+
+    Each candidate runs in its own subprocess, so parallel execution is safe.
+    Results are returned in the same order as the input codes.
+
+    Args:
+        codes: List of code strings to execute
+        test_code: Test code to run against each candidate
+        entry_point: Function name being tested
+        timeout: Maximum execution time per candidate
+        max_workers: Number of parallel workers
+
+    Returns:
+        List of ExecutionResult in same order as input
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    if not codes:
+        return []
+
+    # For small batches, sequential is fine
+    if len(codes) <= 2:
+        return execute_code_batch(codes, test_code, entry_point, timeout)
+
+    results = [None] * len(codes)
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        future_to_idx = {
+            pool.submit(execute_code, code, test_code, entry_point, timeout): i
+            for i, code in enumerate(codes)
+        }
+        for future in as_completed(future_to_idx):
+            idx = future_to_idx[future]
+            try:
+                results[idx] = future.result()
+            except Exception as e:
+                results[idx] = ExecutionResult(
+                    passed=False,
+                    error_type=ErrorType.RUNTIME_TYPE,
+                    error_message=f"Parallel execution error: {e}",
+                )
+
+    return results
+

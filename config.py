@@ -4,7 +4,7 @@ All parameters are centralized here for reproducibility.
 """
 
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Optional
 
 
 @dataclass
@@ -33,6 +33,15 @@ class ExperimentConfig:
     cost_per_1k_input_tokens: float = 0.0   # self-hosted, so 0 API cost
     cost_per_1k_output_tokens: float = 0.0
     gpu_cost_per_hour: float = 2.50         # $/hr for GPU compute (adjust to your setup)
+    
+    # --- Concurrency ---
+    max_concurrency: int = 8               # max parallel problems in pipeline
+    executor_workers: int = 4              # parallel subprocess workers for execution
+    
+    # --- Checkpointing (research reproducibility) ---
+    enable_checkpointing: bool = False
+    checkpoint_db: str = "checkpoints.db"
+    experiment_id: str = ""                # thread_id for checkpoint isolation
     
     # --- Datasets ---
     datasets: List[str] = field(default_factory=lambda: ["humaneval", "mbpp"])

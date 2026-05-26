@@ -1,14 +1,17 @@
 """
 Multi-Agent Evaluation System — Main Entry Point
 
-Runs the full evaluation pipeline on HumanEval and MBPP benchmarks
-using the execution-guided code generation system.
+LangGraph-based evaluation pipeline for code generation architectures.
+Runs the full evaluation pipeline on HumanEval and MBPP benchmarks.
 
 Usage:
-    python main.py                     # Full evaluation with defaults
-    python main.py --k 5               # Override k
-    python main.py --datasets humaneval # Single dataset
-    python main.py --dry-run           # Test pipeline without LLM calls
+    python main.py                           # Full evaluation
+    python main.py --k 5                     # Override k
+    python main.py --datasets humaneval      # Single dataset
+    python main.py --dry-run                 # Test pipeline with mock data
+    python main.py --from-data results/pipeline_data.json  # Re-analyze
+    python main.py --checkpoint              # Enable checkpointing
+    python main.py --visualize               # Print graph diagram
 """
 
 import argparse
@@ -21,15 +24,13 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from config import CONFIG, ExperimentConfig
-from agents.orchestrator import OrchestratorAgent
-from report.report_generator import ReportGenerator
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Multi-Agent Evaluation System for Code Generation"
+        description="Multi-Agent Evaluation System for Code Generation (LangGraph)"
     )
-    
+
     parser.add_argument(
         "--k", type=int, default=None,
         help=f"Number of candidate samples per problem (default: {CONFIG.k})"
@@ -72,6 +73,10 @@ def parse_args():
         help=f"GPU cost per hour in $ (default: {CONFIG.gpu_cost_per_hour})"
     )
     parser.add_argument(
+        "--max-concurrency", type=int, default=None,
+        help=f"Max parallel problems (default: {CONFIG.max_concurrency})"
+    )
+    parser.add_argument(
         "--dry-run", action="store_true",
         help="Run pipeline with mock data (no LLM calls)"
     )
@@ -79,14 +84,26 @@ def parse_args():
         "--from-data", type=str, default=None,
         help="Path to pre-computed pipeline_data.json to skip pipeline execution"
     )
-    
+    parser.add_argument(
+        "--checkpoint", action="store_true",
+        help="Enable graph checkpointing for research reproducibility"
+    )
+    parser.add_argument(
+        "--experiment-id", type=str, default=None,
+        help="Experiment ID for checkpoint isolation"
+    )
+    parser.add_argument(
+        "--visualize", action="store_true",
+        help="Print the graph diagram in Mermaid format and exit"
+    )
+
     return parser.parse_args()
 
 
 def create_config_from_args(args) -> ExperimentConfig:
     """Create experiment config from CLI arguments."""
     config = ExperimentConfig()
-    
+
     if args.k is not None:
         config.k = args.k
     if args.temperatures is not None:
@@ -107,44 +124,50 @@ def create_config_from_args(args) -> ExperimentConfig:
         config.output_dir = args.output_dir
     if args.gpu_cost is not None:
         config.gpu_cost_per_hour = args.gpu_cost
-    
+    if args.max_concurrency is not None:
+        config.max_concurrency = args.max_concurrency
+    if args.checkpoint:
+        config.enable_checkpointing = True
+    if args.experiment_id is not None:
+        config.experiment_id = args.experiment_id
+
     return config
 
 
-def run_dry_run(config: ExperimentConfig):
-    """Run a dry-run with synthetic mock data to test the system."""
+def run_dry_run(config: ExperimentConfig) -> dict:
+    """Run a dry-run with synthetic mock data to test the full system."""
     import numpy as np
-    
+
     print("=" * 60)
     print("[DRY RUN] Generating synthetic evaluation data...")
     print("=" * 60)
-    
+
     np.random.seed(42)
-    
+
     mock_problems = []
     mock_errors = []
-    
+
     # Generate mock data for both datasets
     datasets = {
         "humaneval": 164,
         "mbpp": 427,
     }
-    
+
     for ds_name in config.datasets:
         n_problems = datasets.get(ds_name, 100)
-        
+
         for i in range(n_problems):
             k = config.k
-            
+
             # Simulate generation: some pass, some fail
             n_correct_before = np.random.binomial(k, 0.35)
             n_failed = k - n_correct_before
-            
+
             # Simulate repair: fix some failures
             n_fixed = 0
             per_round = []
             remaining_failures = n_failed
-            
+
             for r in range(config.repair_rounds):
                 fixes = np.random.binomial(
                     remaining_failures * config.fixes_per_failure, 0.2
@@ -157,11 +180,11 @@ def run_dry_run(config: ExperimentConfig):
                 })
                 n_fixed += fixes
                 remaining_failures -= fixes
-            
+
             n_correct_after = n_correct_before + n_fixed
             n_total_candidates = k + n_failed * config.fixes_per_failure * config.repair_rounds
             n_correct_total = n_correct_after
-            
+
             # Simulate test pass rates
             test_rates = []
             for j in range(k):
@@ -169,21 +192,23 @@ def run_dry_run(config: ExperimentConfig):
                     test_rates.append(1.0)
                 else:
                     test_rates.append(np.random.uniform(0, 0.8))
-            
+
             # Simulate timings
             gen_time = np.random.uniform(1, 5)
             exec_time = np.random.uniform(0.1, 2) * k
-            repair_time = np.random.uniform(0.5, 3) * config.repair_rounds if n_failed > 0 else 0
-            
-            # Simulate execution results
+            repair_time = (
+                np.random.uniform(0.5, 3) * config.repair_rounds
+                if n_failed > 0 else 0
+            )
+
+            # Simulate execution results with granular error taxonomy
             exec_results = []
-            # Use granular error taxonomy matching the prompt specification
             error_types = [
                 "syntax_error", "runtime_type", "runtime_value",
                 "runtime_resource", "logical_error", "timeout"
             ]
             error_weights = [0.12, 0.18, 0.15, 0.05, 0.40, 0.10]
-            
+
             for j in range(k):
                 if j < n_correct_before:
                     exec_results.append({
@@ -211,7 +236,7 @@ def run_dry_run(config: ExperimentConfig):
                         "was_repaired": False,
                         "stage": "generation",
                     })
-            
+
             # Mark some errors as repaired
             repaired_count = 0
             for err in mock_errors:
@@ -220,7 +245,7 @@ def run_dry_run(config: ExperimentConfig):
                         and repaired_count < n_fixed):
                     err["was_repaired"] = True
                     repaired_count += 1
-            
+
             problem = {
                 "task_id": f"{ds_name.upper()}/{i}",
                 "dataset": ds_name,
@@ -244,25 +269,47 @@ def run_dry_run(config: ExperimentConfig):
                 "total_repair_rounds": config.repair_rounds,
                 "input_tokens": np.random.randint(500, 2000),
                 "output_tokens": np.random.randint(200, 1000),
-                "repair_input_tokens": np.random.randint(500, 3000) if n_failed > 0 else 0,
-                "repair_output_tokens": np.random.randint(200, 1500) if n_failed > 0 else 0,
+                "repair_input_tokens": (
+                    np.random.randint(500, 3000) if n_failed > 0 else 0
+                ),
+                "repair_output_tokens": (
+                    np.random.randint(200, 1500) if n_failed > 0 else 0
+                ),
             }
             mock_problems.append(problem)
-    
-    # Create orchestrator and run with mock data
-    orchestrator = OrchestratorAgent(config)
-    orchestrator.all_errors = mock_errors
-    results = orchestrator.analyze({"problems": mock_problems})
-    
-    return orchestrator, results
+
+    return {"problems": mock_problems, "errors": mock_errors}
 
 
 def main():
     args = parse_args()
     config = create_config_from_args(args)
-    
+
+    # Handle --visualize
+    if args.visualize:
+        from graph.eval_graph import build_eval_graph
+        from graph.pipeline_graph import build_pipeline_graph
+
+        print("\n=== Main Evaluation Graph ===")
+        eval_graph = build_eval_graph(config)
+        try:
+            print(eval_graph.get_graph().draw_mermaid())
+        except Exception:
+            print("(Mermaid diagram not available)")
+
+        print("\n=== Pipeline Subgraph ===")
+        pipeline_graph = build_pipeline_graph()
+        try:
+            print(pipeline_graph.get_graph().draw_mermaid())
+        except Exception:
+            print("(Mermaid diagram not available)")
+        return
+
+    # Import graph runner
+    from graph.eval_graph import run_evaluation
+
     print("\n" + "=" * 60)
-    print("  🧠 Multi-Agent Evaluation System")
+    print("  [*] Multi-Agent Evaluation System (LangGraph)")
     print("  Execution-Guided Code Generation Evaluation")
     print("=" * 60)
     print(f"\n  Model:          {config.model_name}")
@@ -272,45 +319,46 @@ def main():
     print(f"  Repair Rounds:  {config.repair_rounds}")
     print(f"  Fixes/Failure:  {config.fixes_per_failure}")
     print(f"  Timeout:        {config.execution_timeout}s")
+    print(f"  Concurrency:    {config.max_concurrency}")
+    print(f"  Checkpointing:  {'ON' if config.enable_checkpointing else 'OFF'}")
     print(f"  Output:         {config.output_dir}/")
     print()
-    
+
     start_time = time.perf_counter()
-    
+
     if args.dry_run:
-        orchestrator, results = run_dry_run(config)
+        # Dry-run: generate mock data, skip pipeline
+        dry_data = run_dry_run(config)
+        final_state = run_evaluation(config, dry_run_data=dry_data)
     elif args.from_data:
-        # Load pre-computed data
+        # Load pre-computed pipeline data
         print(f"[Main] Loading pre-computed data from {args.from_data}")
         with open(args.from_data, "r") as f:
             pipeline_data = json.load(f)
-        orchestrator = OrchestratorAgent(config)
-        results = orchestrator.analyze({"problems": pipeline_data})
+        final_state = run_evaluation(
+            config, dry_run_data={"problems": pipeline_data, "errors": []}
+        )
     else:
-        # Full pipeline execution
-        orchestrator = OrchestratorAgent(config)
-        results = orchestrator.analyze()
-    
+        # Full pipeline execution via LangGraph
+        final_state = run_evaluation(config)
+
     elapsed = time.perf_counter() - start_time
-    
-    # Save raw results
-    orchestrator.save_results(config.output_dir)
-    
-    # Generate and save report
-    report_gen = ReportGenerator(results)
-    report_path = os.path.join(config.output_dir, config.report_file)
-    report = report_gen.save(report_path)
-    
+
+    report_path = final_state.get("report_path", "")
+    report = final_state.get("report", "")
+
     print(f"\n{'='*60}")
-    print(f"  ✅ Evaluation complete in {elapsed:.1f}s")
-    print(f"  📊 Report:  {report_path}")
-    print(f"  📁 Data:    {config.output_dir}/")
+    print(f"  [OK] Evaluation complete in {elapsed:.1f}s")
+    print(f"  [REPORT] Report:  {report_path}")
+    print(f"  [DATA]   Data:    {config.output_dir}/")
     print(f"{'='*60}\n")
-    
-    # Print summary to console
-    print(report[:3000])
-    if len(report) > 3000:
-        print(f"\n  ... (full report saved to {report_path})")
+
+    # Print summary to console (ASCII-safe for Windows)
+    if report:
+        safe_report = report.encode("ascii", errors="replace").decode("ascii")
+        print(safe_report[:3000])
+        if len(report) > 3000:
+            print(f"\n  ... (full report saved to {report_path})")
 
 
 if __name__ == "__main__":
