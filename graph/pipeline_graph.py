@@ -255,19 +255,49 @@ def re_execute_node(state: PipelineState) -> dict:
     )
     exec_time = time.perf_counter() - start
 
-    fixed_count = sum(1 for r in results if r.passed)
     repair_round = state.get("repair_round", 0) + 1
 
-    # New failures for next round
+    # Track which initial-failure slot indices were fixed this round.
+    # current_failures carries the slot_index from the original candidate list.
+    current_failures_list = state.get("current_failures", [])
+    # Build a mapping: repair candidate index -> original slot index
+    # Each failure spawns fixes_per_failure repair candidates
+    fixes_per_failure = config.get("fixes_per_failure", 2)
+    slot_for_repair = []
+    for f in current_failures_list:
+        slot_idx = f.get("slot_index", 0)
+        for _ in range(fixes_per_failure):
+            slot_for_repair.append(slot_idx)
+    # Trim to actual number of new repairs (in case of mismatch)
+    slot_for_repair = slot_for_repair[:len(results)]
+
+    # Collect previously-fixed slots from earlier rounds
+    already_fixed_slots = set()
+    for prev_stat in state.get("per_round_stats", []):
+        for idx in prev_stat.get("fixed_slot_indices", []):
+            already_fixed_slots.add(idx)
+
+    # Identify unique slots fixed THIS round (not already fixed)
+    fixed_slots_this_round = set()
+    for i, r in enumerate(results):
+        if r.passed and i < len(slot_for_repair):
+            slot_idx = slot_for_repair[i]
+            if slot_idx not in already_fixed_slots:
+                fixed_slots_this_round.add(slot_idx)
+
+    # New failures for next round (only slots not yet fixed)
+    all_fixed = already_fixed_slots | fixed_slots_this_round
     new_failures = []
     errors = []
     for i, r in enumerate(results):
         if not r.passed:
-            new_failures.append({
-                "slot_index": i,
-                "code": new_repairs[i],
-                "error_result": r,
-            })
+            slot_idx = slot_for_repair[i] if i < len(slot_for_repair) else i
+            if slot_idx not in all_fixed:
+                new_failures.append({
+                    "slot_index": slot_idx,
+                    "code": new_repairs[i],
+                    "error_result": r,
+                })
             errors.append({
                 "task_id": problem.get("task_id", ""),
                 "dataset": problem.get("dataset", ""),
@@ -275,7 +305,7 @@ def re_execute_node(state: PipelineState) -> dict:
                 "error_message": r.error_message[:200],
                 "was_repaired": False,
                 "stage": f"repair_round_{repair_round}",
-                "candidate_index": i,
+                "candidate_index": slot_idx if i < len(slot_for_repair) else i,
             })
 
     # Accumulate repair results
@@ -284,8 +314,9 @@ def re_execute_node(state: PipelineState) -> dict:
     per_round_stats = list(state.get("per_round_stats", []))
     per_round_stats.append({
         "round": repair_round,
-        "candidates_fixed": fixed_count,
-        "candidates_attempted": len(new_repairs),
+        "candidates_fixed": len(fixed_slots_this_round),
+        "candidates_attempted": len(set(slot_for_repair) - already_fixed_slots),
+        "fixed_slot_indices": list(fixed_slots_this_round),
     })
 
     return {
@@ -343,10 +374,18 @@ def rank_node(state: PipelineState) -> dict:
     ranked = rank_candidates(all_codes, all_results)
     best_code, best_result, best_score = ranked[0] if ranked else ("", None, 0.0)
 
-    # Compute metrics
+    # Compute metrics — slot-level deduplication
     num_correct_before = sum(1 for r in initial_results if r.passed)
-    num_fixed = sum(1 for r in repair_results if r.passed)
-    num_correct_after = num_correct_before + num_fixed
+
+    # Determine which initially-failed slots were fixed by repair.
+    # Use per_round_stats which now tracks fixed_slot_indices.
+    per_round_stats = state.get("per_round_stats", [])
+    fixed_slots = set()
+    for rs in per_round_stats:
+        for idx in rs.get("fixed_slot_indices", []):
+            fixed_slots.add(idx)
+    num_fixed_by_repair = len(fixed_slots)
+    num_correct_after = num_correct_before + num_fixed_by_repair
     num_correct_total = sum(1 for r in all_results if r.passed)
 
     # Test pass rates (initial candidates only)
@@ -355,6 +394,15 @@ def rank_node(state: PipelineState) -> dict:
         rate = r.tests_passed / r.tests_total if r.tests_total > 0 else 0.0
         test_pass_rates.append(rate)
 
+    # Rebuild errors with correct was_repaired flags.
+    # Errors from state are append-only and always have was_repaired=False.
+    # We retroactively mark generation-stage errors for fixed slots.
+    raw_errors = list(state.get("errors", []))
+    for err in raw_errors:
+        if (err.get("stage") == "generation"
+                and err.get("candidate_index") in fixed_slots):
+            err["was_repaired"] = True
+
     result = {
         "task_id": problem.get("task_id", ""),
         "dataset": problem.get("dataset", ""),
@@ -362,7 +410,7 @@ def rank_node(state: PipelineState) -> dict:
         "num_correct_before_repair": num_correct_before,
         "num_correct_after_repair": num_correct_after,
         "num_failed_before_repair": len(candidates) - num_correct_before,
-        "num_fixed_by_repair": num_fixed,
+        "num_fixed_by_repair": num_fixed_by_repair,
         "num_candidates_total": len(all_codes),
         "num_correct_total": num_correct_total,
         "any_candidate_passed": num_correct_total > 0,
@@ -374,13 +422,16 @@ def rank_node(state: PipelineState) -> dict:
         "total_executions": len(exec_results_dicts) + len(all_repair_result_dicts),
         "test_pass_rates": test_pass_rates,
         "execution_results": exec_results_dicts + all_repair_result_dicts,
-        "per_round_stats": state.get("per_round_stats", []),
+        "per_round_stats": per_round_stats,
         "total_repair_rounds": config.get("repair_rounds", 2),
         "input_tokens": state.get("input_tokens", 0),
         "output_tokens": state.get("output_tokens", 0),
         "repair_input_tokens": state.get("repair_input_tokens", 0),
         "repair_output_tokens": state.get("repair_output_tokens", 0),
     }
+
+    # Override errors in result so eval_graph gets corrected was_repaired flags
+    result["_corrected_errors"] = raw_errors
 
     return {"result": result}
 

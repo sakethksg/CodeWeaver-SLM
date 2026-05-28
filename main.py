@@ -335,8 +335,49 @@ def main():
         print(f"[Main] Loading pre-computed data from {args.from_data}")
         with open(args.from_data, "r") as f:
             pipeline_data = json.load(f)
+
+        # Reconstruct errors from pipeline results (not persisted in pipeline_data.json)
+        reconstructed_errors = []
+        for problem in pipeline_data:
+            task_id = problem.get("task_id", "")
+            dataset = problem.get("dataset", "")
+            num_candidates = problem.get("num_candidates", 0)
+            exec_results = problem.get("execution_results", [])
+
+            # Determine which slots were fixed by repair
+            fixed_slots = set()
+            for rs in problem.get("per_round_stats", []):
+                for idx in rs.get("fixed_slot_indices", []):
+                    fixed_slots.add(idx)
+
+            # Initial candidate errors (first num_candidates results)
+            for i, er in enumerate(exec_results[:num_candidates]):
+                if not er.get("passed", False):
+                    reconstructed_errors.append({
+                        "task_id": task_id,
+                        "dataset": dataset,
+                        "error_type": er.get("error_type", "runtime_type"),
+                        "error_message": er.get("error_message", "")[:200],
+                        "was_repaired": i in fixed_slots,
+                        "stage": "generation",
+                        "candidate_index": i,
+                    })
+
+            # Repair candidate errors (after initial candidates)
+            for i, er in enumerate(exec_results[num_candidates:]):
+                if not er.get("passed", False):
+                    reconstructed_errors.append({
+                        "task_id": task_id,
+                        "dataset": dataset,
+                        "error_type": er.get("error_type", "runtime_type"),
+                        "error_message": er.get("error_message", "")[:200],
+                        "was_repaired": False,
+                        "stage": "repair",
+                        "candidate_index": i,
+                    })
+
         final_state = run_evaluation(
-            config, dry_run_data={"problems": pipeline_data, "errors": []}
+            config, dry_run_data={"problems": pipeline_data, "errors": reconstructed_errors}
         )
     else:
         # Full pipeline execution via LangGraph

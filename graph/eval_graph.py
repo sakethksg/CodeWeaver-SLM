@@ -81,7 +81,10 @@ def _run_pipeline_for_problem(
     }
 
     final_state = pipeline_graph.invoke(initial_state)
-    return final_state.get("result", {}), final_state.get("errors", [])
+    result = final_state.get("result", {})
+    # Prefer corrected errors (with was_repaired flags) from rank_node
+    errors = result.pop("_corrected_errors", None) or final_state.get("errors", [])
+    return result, errors
 
 
 def process_problems_node(state: EvalState) -> dict:
