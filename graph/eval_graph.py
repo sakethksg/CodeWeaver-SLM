@@ -251,6 +251,7 @@ def build_eval_graph(config: ExperimentConfig = None):
     # Compile with optional checkpointing
     if config.enable_checkpointing:
         try:
+            # pyrefly: ignore [missing-import]
             from langgraph.checkpoint.sqlite import SqliteSaver
             checkpointer = SqliteSaver.from_conn_string(config.checkpoint_db)
             print(f"[EvalGraph] Checkpointing enabled: {config.checkpoint_db}")
