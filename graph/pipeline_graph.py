@@ -13,7 +13,10 @@ from typing import Dict, List
 from langgraph.graph import StateGraph, START, END
 
 from graph.state import PipelineState
-from pipeline.generator import _build_generation_prompt, CODE_STOP_SEQUENCES
+from pipeline.generator import (
+    _build_generation_prompt, _finalize_humaneval_code, _finalize_mbpp_code,
+    CODE_STOP_SEQUENCES,
+)
 from pipeline.executor import (
     execute_code_batch_parallel, ErrorType, ExecutionResult
 )
@@ -30,7 +33,7 @@ def generate_node(state: PipelineState) -> dict:
 
     One API call per temperature, with n= samples per call.
     """
-    from pipeline.llm import create_llm, generate_batch
+    from pipeline.llm import create_llm, generate_batch, normalize_code_output
 
     problem = state["problem"]
     config = state["config"]
@@ -64,10 +67,11 @@ def generate_node(state: PipelineState) -> dict:
         total_output_tokens += stats["output_tokens"]
 
         for code in completions:
+            normalized = normalize_code_output(code)
             if problem.get("dataset") == "humaneval":
-                full_code = problem["prompt"] + code
+                full_code = _finalize_humaneval_code(problem["prompt"], normalized)
             else:
-                full_code = code
+                full_code = _finalize_mbpp_code(normalized)
             candidates.append(full_code)
 
     return {
@@ -160,8 +164,10 @@ def repair_node(state: PipelineState) -> dict:
 
     Builds repair prompts for all failures, sends as one batch.
     """
-    from pipeline.llm import create_llm, repair_batch
-    from pipeline.repairer import _build_repair_prompt, REPAIR_STOP_SEQUENCES
+    from pipeline.llm import create_llm, repair_batch, normalize_code_output
+    from pipeline.repairer import (
+        _build_repair_prompt, _finalize_humaneval_repair, REPAIR_STOP_SEQUENCES,
+    )
 
     problem = state["problem"]
     config = state["config"]
@@ -199,10 +205,12 @@ def repair_node(state: PipelineState) -> dict:
     for i, repairs_for_failure in enumerate(batch_results):
         for repaired in repairs_for_failure:
             if repaired:
+                normalized = normalize_code_output(repaired)
                 if problem.get("dataset") == "humaneval":
-                    if not repaired.strip().startswith("def "):
-                        repaired = problem["prompt"] + repaired
-                repairs.append(repaired)
+                    normalized = _finalize_humaneval_repair(problem["prompt"], normalized)
+                else:
+                    normalized = _finalize_mbpp_code(normalized)
+                repairs.append(normalized)
 
     return {
         "all_repairs": repairs,
