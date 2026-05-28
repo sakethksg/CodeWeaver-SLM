@@ -138,10 +138,13 @@ def repair_candidates(
                         all_slot_indices.append(slot_idx)
         else:
             # Backward compat: use raw OpenAI client
+            from pipeline.llm import chat_completions_create
+
             for i, (sys_msg, usr_msg) in enumerate(prompts):
                 slot_idx = slot_indices_for_prompts[i]
                 try:
-                    response = client.chat.completions.create(
+                    response = chat_completions_create(
+                        client,
                         model=CONFIG.model_name,
                         messages=[
                             {"role": "system", "content": sys_msg},

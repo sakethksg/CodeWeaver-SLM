@@ -104,6 +104,8 @@ def generate_candidates(
                 candidates.append(full_code)
     else:
         # Backward compat: use raw OpenAI client
+        from pipeline.llm import chat_completions_create
+
         for i, temp in enumerate(temperatures):
             n_samples = per_temp + (1 if i < remainder else 0)
             if n_samples == 0:
@@ -111,7 +113,8 @@ def generate_candidates(
 
             start = time.perf_counter()
             try:
-                response = client.chat.completions.create(
+                response = chat_completions_create(
+                    client,
                     model=CONFIG.model_name,
                     messages=[
                         {"role": "system", "content": system_msg},

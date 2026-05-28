@@ -69,6 +69,21 @@ def create_llm(
     )
 
 
+def chat_completions_create(client, **kwargs):
+    """
+    Call OpenAI-compatible chat completions across client variants.
+
+    Supports:
+      - openai.OpenAI (client.chat.completions.create)
+      - openai.resources.chat.completions.Completions (client.create)
+    """
+    if hasattr(client, "chat") and hasattr(client.chat, "completions"):
+        return client.chat.completions.create(**kwargs)
+    if hasattr(client, "create"):
+        return client.create(**kwargs)
+    raise AttributeError("Unsupported OpenAI client: no chat.completions or create")
+
+
 def generate_batch(
     llm: ChatOpenAI,
     system_msg: str,
@@ -98,7 +113,8 @@ def generate_batch(
 
     try:
         # Use generate() with n= for multiple completions in one call
-        response = llm.client.chat.completions.create(
+        response = chat_completions_create(
+            llm.client,
             model=llm.model_name,
             messages=[
                 {"role": "system", "content": system_msg},
@@ -167,7 +183,8 @@ def repair_batch(
         # Use direct API calls with n= for each prompt in sequence
         # (llm.batch sends each as a separate request, but vLLM batches on GPU)
         for sys_msg, usr_msg in prompts:
-            response = llm.client.chat.completions.create(
+            response = chat_completions_create(
+                llm.client,
                 model=llm.model_name,
                 messages=[
                     {"role": "system", "content": sys_msg},
