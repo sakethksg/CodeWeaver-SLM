@@ -32,6 +32,13 @@ class ReportGenerator:
             self._conclusions(),
         ]
         return "\n\n".join(s for s in sections if s)
+
+    @staticmethod
+    def _fmt(value: Any, digits: int = 3) -> str:
+        """Format numeric values with fixed precision or return N/A."""
+        if value is None:
+            return "N/A"
+        return f"{value:.{digits}f}"
     
     def _header(self) -> str:
         """Report header with configuration."""
@@ -103,16 +110,16 @@ class ReportGenerator:
             after = ds_data.get("pass_at_k_after_repair", {})
             oracle_upper = ds_data.get("oracle_upper_bound", 0)
             
-            p1 = before.get("pass@1", 0)
-            p5 = before.get("pass@5", 0)
-            p10 = before.get("pass@10", 0)
-            p10_repair = after.get("pass@10", 0)
+            p1 = before.get("pass@1")
+            p5 = before.get("pass@5")
+            p10 = before.get("pass@10")
+            p10_repair = after.get("pass@10")
             oracle_k = oracle_upper
             avg = ds_data.get("avg_score", 0)
             
             rows.append(
-                f"| **{ds_name.upper()}** | {p1:.3f} | {p5:.3f} | {p10:.3f} | "
-                f"{p10_repair:.3f} | {oracle_k:.3f} | {avg:.3f} |"
+                f"| **{ds_name.upper()}** | {self._fmt(p1)} | {self._fmt(p5)} | {self._fmt(p10)} | "
+                f"{self._fmt(p10_repair)} | {self._fmt(oracle_k)} | {self._fmt(avg)} |"
             )
         
         # Aggregate row
@@ -122,16 +129,16 @@ class ReportGenerator:
         )
         oracle_upper = self.agents.get("oracle_analysis", {}).get("oracle_pass_at_1", 0)
         
-        agg_p1 = gen_pass.get("pass@1", 0)
-        agg_p5 = gen_pass.get("pass@5", 0)
-        agg_p10 = gen_pass.get("pass@10", 0)
-        agg_p10r = repair_pass.get("pass@10", 0)
+        agg_p1 = gen_pass.get("pass@1")
+        agg_p5 = gen_pass.get("pass@5")
+        agg_p10 = gen_pass.get("pass@10")
+        agg_p10r = repair_pass.get("pass@10")
         agg_oracle = oracle_upper
         agg_avg = gen_results.get("avg_test_pass_rate", 0)
         
         rows.append(
-            f"| **OVERALL** | {agg_p1:.3f} | {agg_p5:.3f} | {agg_p10:.3f} | "
-            f"{agg_p10r:.3f} | {agg_oracle:.3f} | {agg_avg:.3f} |"
+            f"| **OVERALL** | {self._fmt(agg_p1)} | {self._fmt(agg_p5)} | {self._fmt(agg_p10)} | "
+            f"{self._fmt(agg_p10r)} | {self._fmt(agg_oracle)} | {self._fmt(agg_avg)} |"
         )
         
         return f"{header}\n{separator}\n" + "\n".join(rows)
@@ -147,9 +154,9 @@ class ReportGenerator:
 
 | Metric | Value |
 |--------|-------|
-| pass@1 (before repair) | {gen.get('pass_at_k_before_repair', {}).get('pass@1', 0):.4f} |
-| pass@5 (before repair) | {gen.get('pass_at_k_before_repair', {}).get('pass@5', 0):.4f} |
-| pass@10 (before repair) | {gen.get('pass_at_k_before_repair', {}).get('pass@10', 0):.4f} |
+| pass@1 (before repair) | {self._fmt(gen.get('pass_at_k_before_repair', {}).get('pass@1'), 4)} |
+| pass@5 (before repair) | {self._fmt(gen.get('pass_at_k_before_repair', {}).get('pass@5'), 4)} |
+| pass@10 (before repair) | {self._fmt(gen.get('pass_at_k_before_repair', {}).get('pass@10'), 4)} |
 | % Problems Solved | {gen.get('pct_problems_solved', 0):.1f}% |
 | Problems Solved | {gen.get('problems_solved', 0)}/{gen.get('total_problems', 0)} |
 | Avg Test Pass Rate | {gen.get('avg_test_pass_rate', 0):.4f} |"""
@@ -169,13 +176,13 @@ class ReportGenerator:
 
 | Metric | Value |
 |--------|-------|
-| pass@1 (after repair) | {repair.get('pass_at_k_after_repair', {}).get('pass@1', 0):.4f} |
-| pass@5 (after repair) | {repair.get('pass_at_k_after_repair', {}).get('pass@5', 0):.4f} |
-| pass@10 (after repair) | {repair.get('pass_at_k_after_repair', {}).get('pass@10', 0):.4f} |
+| pass@1 (after repair) | {self._fmt(repair.get('pass_at_k_after_repair', {}).get('pass@1'), 4)} |
+| pass@5 (after repair) | {self._fmt(repair.get('pass_at_k_after_repair', {}).get('pass@5'), 4)} |
+| pass@10 (after repair) | {self._fmt(repair.get('pass_at_k_after_repair', {}).get('pass@10'), 4)} |
 | Repair Success Rate | {repair.get('repair_success_rate', 0):.1f}% |
 | Candidates Fixed | {repair.get('candidates_fixed_ratio', 'N/A')} |
-| Δ pass@1 | {repair.get('delta_improvement', {}).get('delta_pass@1', 0):+.4f} |
-| Δ pass@10 | {repair.get('delta_improvement', {}).get('delta_pass@10', 0):+.4f} |"""
+| Δ pass@1 | {self._fmt(repair.get('delta_improvement', {}).get('delta_pass@1'), 4)} |
+| Δ pass@10 | {self._fmt(repair.get('delta_improvement', {}).get('delta_pass@10'), 4)} |"""
         
         # Per-round table
         rounds = repair.get("per_round_analysis", [])
@@ -217,9 +224,13 @@ class ReportGenerator:
         k_curve = tradeoff.get("accuracy_vs_k", [])
         k_rows = []
         for point in k_curve:
+            accuracy = point.get("accuracy")
+            efficiency = point.get("efficiency")
+            if accuracy is None:
+                continue
             k_rows.append(
-                f"| {point['k']} | {point['accuracy']:.4f} | "
-                f"{point['avg_latency']:.2f}s | {point['efficiency']:.4f} |"
+                f"| {point['k']} | {self._fmt(accuracy, 4)} | "
+                f"{point['avg_latency']:.2f}s | {self._fmt(efficiency, 4)} |"
             )
         k_table = (
             "| k | Accuracy (pass@k) | Avg Latency | Efficiency |\n"
@@ -231,8 +242,11 @@ class ReportGenerator:
         r_curve = tradeoff.get("accuracy_vs_repair_rounds", [])
         r_rows = []
         for point in r_curve:
+            accuracy = point.get("accuracy")
+            if accuracy is None:
+                continue
             r_rows.append(
-                f"| {point['repair_rounds']} | {point['accuracy']:.4f} | "
+                f"| {point['repair_rounds']} | {self._fmt(accuracy, 4)} | "
                 f"{point['avg_latency']:.2f}s | {point['marginal_gain']:+.4f} |"
             )
         r_table = (
@@ -259,7 +273,7 @@ class ReportGenerator:
 | Parameter | Value |
 |-----------|-------|
 | Best k | {best_k.get('k', 'N/A')} |
-| Best k Accuracy | {best_k.get('accuracy', 0):.4f} |
+| Best k Accuracy | {self._fmt(best_k.get('accuracy'), 4)} |
 | Best k Latency | {best_k.get('avg_latency', 0):.2f}s |
 | Optimal Repair Rounds | {optimal.get('optimal_repair_rounds', 'N/A')} |"""
     

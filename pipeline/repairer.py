@@ -30,6 +30,22 @@ MAX_ERROR_LENGTH = 200
 REPAIR_STOP_SEQUENCES = ["\n\nclass ", "\n\ndef ", "\n\n#", "\n\nif __name__"]
 
 
+def _finalize_humaneval_repair(prompt: str, repaired: str) -> str:
+    """Return full HumanEval code, using a full def if provided."""
+    stripped = repaired.lstrip()
+    if stripped.startswith("def "):
+        return repaired.strip()
+
+    if not repaired:
+        return prompt
+
+    lines = repaired.splitlines()
+    needs_indent = any(line.strip() and not line.startswith((" ", "\t")) for line in lines)
+    if needs_indent:
+        lines = [("    " + line) if line.strip() else "" for line in lines]
+    return prompt + "\n".join(lines)
+
+
 def _build_repair_prompt(
     original_code: str,
     error_info: ExecutionResult,
@@ -114,7 +130,7 @@ def repair_candidates(
 
         if client is None:
             # Use batched repair via pipeline.llm
-            from pipeline.llm import create_llm, repair_batch
+            from pipeline.llm import create_llm, repair_batch, normalize_code_output
 
             llm = create_llm(temperature=CONFIG.repair_temperature)
             batch_results, stats = repair_batch(
@@ -131,14 +147,14 @@ def repair_candidates(
                 slot_idx = slot_indices_for_prompts[i]
                 for repaired in repairs_for_failure:
                     if repaired:
+                        normalized = normalize_code_output(repaired)
                         if problem.get("dataset") == "humaneval":
-                            if not repaired.strip().startswith("def "):
-                                repaired = problem["prompt"] + repaired
-                        round_repairs.append(repaired)
+                            normalized = _finalize_humaneval_repair(problem["prompt"], normalized)
+                        round_repairs.append(normalized)
                         all_slot_indices.append(slot_idx)
         else:
             # Backward compat: use raw OpenAI client
-            from pipeline.llm import chat_completions_create
+            from pipeline.llm import chat_completions_create, normalize_code_output
 
             for i, (sys_msg, usr_msg) in enumerate(prompts):
                 slot_idx = slot_indices_for_prompts[i]
@@ -159,10 +175,10 @@ def repair_candidates(
                     for choice in response.choices:
                         repaired = choice.message.content
                         if repaired:
+                            normalized = normalize_code_output(repaired)
                             if problem.get("dataset") == "humaneval":
-                                if not repaired.strip().startswith("def "):
-                                    repaired = problem["prompt"] + repaired
-                            round_repairs.append(repaired)
+                                normalized = _finalize_humaneval_repair(problem["prompt"], normalized)
+                            round_repairs.append(normalized)
                             all_slot_indices.append(slot_idx)
 
                     if response.usage:

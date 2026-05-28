@@ -55,11 +55,15 @@ class RepairAnalysisAgent(BaseAgent):
         # ── Delta improvement with anomaly detection ──
         delta = {}
         for k in k_values:
-            before = pass_at_k_before.get(k, 0.0)
-            after = pass_at_k_after.get(k, 0.0)
+            before = pass_at_k_before.get(k)
+            after = pass_at_k_after.get(k)
+            if before is None or after is None:
+                delta[f"delta_pass@{k}"] = None
+                continue
+
             d = after - before
             delta[f"delta_pass@{k}"] = d
-            
+
             # Anomaly: repair should NOT decrease performance
             err = self.validate_upper_bound(after, before, f"pass@{k}_after", f"pass@{k}_before")
             if err:

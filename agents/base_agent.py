@@ -102,11 +102,14 @@ class BaseAgent(ABC):
         Returns list of anomaly messages for violations.
         """
         anomalies = []
-        for i in range(1, len(values)):
-            if values[i] < values[i - 1] - 1e-9:  # tolerance for float
+        filtered = [(label, value) for label, value in zip(labels, values) if value is not None]
+        for i in range(1, len(filtered)):
+            prev_label, prev_val = filtered[i - 1]
+            curr_label, curr_val = filtered[i]
+            if curr_val < prev_val - 1e-9:  # tolerance for float
                 anomalies.append(
-                    f"Non-monotonic: {labels[i-1]}={values[i-1]:.4f} > "
-                    f"{labels[i]}={values[i]:.4f}"
+                    f"Non-monotonic: {prev_label}={prev_val:.4f} > "
+                    f"{curr_label}={curr_val:.4f}"
                 )
         return anomalies
     
@@ -173,7 +176,7 @@ class BaseAgent(ABC):
                 c = p[key_c]
                 if n >= k:
                     scores.append(BaseAgent.pass_at_k(n, c, k))
-            results[k] = float(np.mean(scores)) if scores else 0.0
+            results[k] = float(np.mean(scores)) if scores else None
         return results
     
     @staticmethod

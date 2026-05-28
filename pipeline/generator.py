@@ -16,6 +16,31 @@ from config import CONFIG
 CODE_STOP_SEQUENCES = ["\n\nclass ", "\n\ndef ", "\n\n#", "\n\nif __name__"]
 
 
+def _finalize_humaneval_code(prompt: str, body_or_code: str) -> str:
+    """Return full HumanEval code, using a full def if provided."""
+    stripped = body_or_code.lstrip()
+    if stripped.startswith("def "):
+        return body_or_code.strip()
+
+    if not body_or_code:
+        return prompt
+
+    lines = body_or_code.splitlines()
+    needs_indent = any(line.strip() and not line.startswith((" ", "\t")) for line in lines)
+    if needs_indent:
+        lines = [("    " + line) if line.strip() else "" for line in lines]
+    return prompt + "\n".join(lines)
+
+
+def _finalize_mbpp_code(code: str) -> str:
+    """Extract the first function definition for MBPP when possible."""
+    lines = code.splitlines()
+    for idx, line in enumerate(lines):
+        if line.lstrip().startswith("def "):
+            return "\n".join(lines[idx:]).strip()
+    return code.strip()
+
+
 def _build_generation_prompt(problem: Dict) -> Tuple[str, str]:
     """Build a prompt for code generation from a problem dict."""
     prompt = problem["prompt"]
@@ -79,7 +104,7 @@ def generate_candidates(
 
     # Use pipeline.llm if no raw client provided
     if client is None:
-        from pipeline.llm import create_llm, generate_batch
+        from pipeline.llm import create_llm, generate_batch, normalize_code_output
 
         for i, temp in enumerate(temperatures):
             n_samples = per_temp + (1 if i < remainder else 0)
@@ -97,14 +122,15 @@ def generate_candidates(
             total_output_tokens += stats["output_tokens"]
 
             for code in completions:
+                normalized = normalize_code_output(code)
                 if problem.get("dataset") == "humaneval":
-                    full_code = problem["prompt"] + code
+                    full_code = _finalize_humaneval_code(problem["prompt"], normalized)
                 else:
-                    full_code = code
+                    full_code = _finalize_mbpp_code(normalized)
                 candidates.append(full_code)
     else:
         # Backward compat: use raw OpenAI client
-        from pipeline.llm import chat_completions_create
+        from pipeline.llm import chat_completions_create, normalize_code_output
 
         for i, temp in enumerate(temperatures):
             n_samples = per_temp + (1 if i < remainder else 0)
@@ -131,10 +157,11 @@ def generate_candidates(
                 for choice in response.choices:
                     code = choice.message.content
                     if code:
+                        normalized = normalize_code_output(code)
                         if problem.get("dataset") == "humaneval":
-                            full_code = problem["prompt"] + code
+                            full_code = _finalize_humaneval_code(problem["prompt"], normalized)
                         else:
-                            full_code = code
+                            full_code = _finalize_mbpp_code(normalized)
                         candidates.append(full_code)
 
                 if response.usage:

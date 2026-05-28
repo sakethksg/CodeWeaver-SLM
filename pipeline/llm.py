@@ -8,6 +8,7 @@ Provides:
   - TokenTracker: Accumulates token usage across calls
 """
 
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
@@ -82,6 +83,46 @@ def chat_completions_create(client, **kwargs):
     if hasattr(client, "create"):
         return client.create(**kwargs)
     raise AttributeError("Unsupported OpenAI client: no chat.completions or create")
+
+
+def normalize_code_output(text: str) -> str:
+    """Normalize model output to likely Python code (strip fences/prose)."""
+    if not text:
+        return ""
+
+    cleaned = text.strip()
+
+    if "```" in cleaned:
+        blocks = re.findall(r"```(?:python)?\s*([\s\S]*?)```", cleaned, flags=re.IGNORECASE)
+        if blocks:
+            cleaned = blocks[0].strip()
+        else:
+            cleaned = cleaned.replace("```", "").strip()
+
+    lines = cleaned.splitlines()
+
+    def is_code_line(line: str) -> bool:
+        stripped = line.lstrip()
+        if not stripped:
+            return False
+        prefixes = (
+            "def ", "class ", "@", "import ", "from ", "return ",
+            "if ", "for ", "while ", "try:", "with ", "elif ",
+            "else:", "raise ", "yield ",
+        )
+        if stripped.startswith(prefixes):
+            return True
+        if line.startswith((" ", "\t")):
+            return True
+        if "=" in stripped and not stripped.lower().startswith(("here", "the", "this", "note")):
+            return True
+        return False
+
+    for idx, line in enumerate(lines):
+        if is_code_line(line):
+            return "\n".join(lines[idx:]).strip()
+
+    return cleaned
 
 
 def generate_batch(

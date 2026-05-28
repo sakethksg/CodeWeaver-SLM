@@ -71,10 +71,12 @@ class DatasetAnalysisAgent(BaseAgent):
             
             # ── Validate invariants per dataset ──
             for k in k_values:
-                b = pass_before.get(k, 0)
-                a = pass_after.get(k, 0)
+                b = pass_before.get(k)
+                a = pass_after.get(k)
                 o = oracle_upper_bound
-                
+                if a is None or b is None:
+                    continue
+
                 err = self.validate_upper_bound(a, b, f"{ds_name} pass@{k}_after", f"{ds_name} pass@{k}_before")
                 if err:
                     self.flag_anomaly(err)

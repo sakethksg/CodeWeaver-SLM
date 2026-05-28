@@ -28,8 +28,10 @@ def run_consistency_checks(
     gen_pk = gen_results.get("pass_at_k_before_repair", {})
     rep_pk = repair_results.get("pass_at_k_after_repair", {})
     for k_str in ["pass@1", "pass@5", "pass@10"]:
-        g = gen_pk.get(k_str, 0)
-        r = rep_pk.get(k_str, 0)
+        g = gen_pk.get(k_str)
+        r = rep_pk.get(k_str)
+        if g is None or r is None:
+            continue
         if r < g - 1e-9:
             inconsistencies.append(
                 f"[CHECK 1] repair {k_str}={r:.4f} < generation {k_str}={g:.4f}"

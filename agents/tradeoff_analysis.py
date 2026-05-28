@@ -76,14 +76,14 @@ class TradeoffAnalysisAgent(BaseAgent):
                 
                 latencies.append(scaled_gen_time + scaled_exec_time)
             
-            avg_accuracy = float(np.mean(pass_at_k_scores)) if pass_at_k_scores else 0.0
+            avg_accuracy = float(np.mean(pass_at_k_scores)) if pass_at_k_scores else None
             avg_latency = float(np.mean(latencies)) if latencies else 0.0
             
             k_curve.append({
                 "k": k,
                 "accuracy": avg_accuracy,
                 "avg_latency": avg_latency,
-                "efficiency": self.safe_div(avg_accuracy, avg_latency),
+                "efficiency": self.safe_div(avg_accuracy, avg_latency) if avg_accuracy is not None else None,
             })
         
         # ── Validate accuracy monotonicity with k ──
@@ -121,7 +121,7 @@ class TradeoffAnalysisAgent(BaseAgent):
                 
                 latencies.append(gen_time + exec_time + scaled_repair)
             
-            avg_accuracy = float(np.mean(pass_at_k_scores)) if pass_at_k_scores else 0.0
+            avg_accuracy = float(np.mean(pass_at_k_scores)) if pass_at_k_scores else None
             avg_latency = float(np.mean(latencies)) if latencies else 0.0
             
             repair_curve.append({
@@ -133,16 +133,20 @@ class TradeoffAnalysisAgent(BaseAgent):
         
         # Compute marginal gains
         for i in range(1, len(repair_curve)):
-            repair_curve[i]["marginal_gain"] = (
-                repair_curve[i]["accuracy"] - repair_curve[i - 1]["accuracy"]
-            )
+            prev = repair_curve[i - 1]["accuracy"]
+            curr = repair_curve[i]["accuracy"]
+            if prev is None or curr is None:
+                repair_curve[i]["marginal_gain"] = 0.0
+            else:
+                repair_curve[i]["marginal_gain"] = curr - prev
         
         # ── Optimal operating point (per prompt methodology) ──
         # Best k = argmax(efficiency)
-        if k_curve:
-            best_k = max(k_curve, key=lambda x: x["efficiency"])
+        valid_k = [pt for pt in k_curve if pt["efficiency"] is not None]
+        if valid_k:
+            best_k = max(valid_k, key=lambda x: x["efficiency"])
         else:
-            best_k = {"k": 1, "accuracy": 0, "avg_latency": 0, "efficiency": 0}
+            best_k = {"k": 1, "accuracy": None, "avg_latency": 0, "efficiency": None}
         
         # Optimal repair = last round where marginal_gain > threshold
         optimal_repair = 0

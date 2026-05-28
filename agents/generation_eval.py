@@ -45,7 +45,7 @@ class GenerationEvalAgent(BaseAgent):
         )
         
         # Validate monotonicity: pass@1 <= pass@5 <= pass@10
-        pk_values = [pass_at_k.get(k, 0) for k in k_values]
+        pk_values = [pass_at_k.get(k) for k in k_values]
         pk_labels = [f"pass@{k}" for k in k_values]
         for anomaly in self.validate_monotonic_non_decreasing(pk_values, pk_labels):
             self.flag_anomaly(anomaly)
