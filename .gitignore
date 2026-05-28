@@ -42,7 +42,3 @@ Thumbs.db
 # Local logs and runtime outputs
 *.log
 logs/
-
-# Generated evaluation outputs
-results/*.json
-results/*.md

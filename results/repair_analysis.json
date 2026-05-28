@@ -1,0 +1,44 @@
+{
+  "agent": "Repair Analysis Agent",
+  "pass_at_k_after_repair": {
+    "pass@1": 0.9951219512195121,
+    "pass@5": 1.0,
+    "pass@10": null
+  },
+  "pass_at_k_before_repair": {
+    "pass@1": 0.8499999999999999,
+    "pass@5": 0.975609756097561,
+    "pass@10": null
+  },
+  "delta_improvement": {
+    "delta_pass@1": 0.1451219512195122,
+    "delta_pass@5": 0.024390243902439046,
+    "delta_pass@10": null
+  },
+  "repair_success_rate": 196.7479674796748,
+  "total_failed_candidates": 123,
+  "total_fixed_by_repair": 242,
+  "candidates_fixed_ratio": "242/123",
+  "per_round_analysis": [
+    {
+      "round": 1,
+      "candidates_fixed": 182,
+      "candidates_attempted": 246,
+      "fix_rate": 73.98373983739837
+    },
+    {
+      "round": 2,
+      "candidates_fixed": 60,
+      "candidates_attempted": 128,
+      "fix_rate": 46.875
+    }
+  ],
+  "diminishing_returns": [
+    {
+      "from_round": 1,
+      "to_round": 2,
+      "rate_change": -27.108739837398375
+    }
+  ],
+  "anomalies": []
+}

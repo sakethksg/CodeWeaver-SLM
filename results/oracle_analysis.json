@@ -1,0 +1,1162 @@
+{
+  "agent": "Oracle Analysis Agent",
+  "oracle_pass_at_1": 1.0,
+  "oracle_solve_rate": 100.0,
+  "oracle_solved_count": 164,
+  "total_problems": 164,
+  "gap_to_oracle": {
+    "from_generation_pass1": 0.15000000000000013,
+    "from_after_repair_pass1": 0.00487804878048792
+  },
+  "per_problem": [
+    {
+      "task_id": "HumanEval/5",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/7",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/4",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 15,
+      "num_correct_total": 10
+    },
+    {
+      "task_id": "HumanEval/10",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/0",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/9",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 15,
+      "num_correct_total": 10
+    },
+    {
+      "task_id": "HumanEval/3",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 15,
+      "num_correct_total": 8
+    },
+    {
+      "task_id": "HumanEval/11",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/8",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 9
+    },
+    {
+      "task_id": "HumanEval/15",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/16",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/12",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 9
+    },
+    {
+      "task_id": "HumanEval/14",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 9
+    },
+    {
+      "task_id": "HumanEval/19",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/21",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/6",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 19,
+      "num_correct_total": 12
+    },
+    {
+      "task_id": "HumanEval/23",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/24",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/20",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 9
+    },
+    {
+      "task_id": "HumanEval/22",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/26",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/28",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/29",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/30",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/25",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 8
+    },
+    {
+      "task_id": "HumanEval/31",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/17",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 21,
+      "num_correct_total": 13
+    },
+    {
+      "task_id": "HumanEval/34",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/13",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/33",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/35",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/36",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/27",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/37",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/39",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/40",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/42",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/43",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/41",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/46",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/47",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/32",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/48",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/1",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/38",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 15,
+      "num_correct_total": 10
+    },
+    {
+      "task_id": "HumanEval/2",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/49",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/53",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/45",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/55",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/51",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/58",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/44",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/59",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/50",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/60",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/61",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/64",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/54",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/62",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/66",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/67",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/63",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/68",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/69",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/70",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/73",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/74",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/18",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 17,
+      "num_correct_total": 10
+    },
+    {
+      "task_id": "HumanEval/72",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/77",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/78",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/79",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/80",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/56",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 4
+    },
+    {
+      "task_id": "HumanEval/57",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/83",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/81",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/85",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/84",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/87",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/52",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/86",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/90",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/88",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/71",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 4
+    },
+    {
+      "task_id": "HumanEval/93",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/75",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/95",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/94",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/97",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/96",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/98",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/76",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/101",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/99",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/65",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 17,
+      "num_correct_total": 8
+    },
+    {
+      "task_id": "HumanEval/104",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/100",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/105",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/106",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/91",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/107",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/89",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 4
+    },
+    {
+      "task_id": "HumanEval/108",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/109",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/112",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/82",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 13,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/113",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/116",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/111",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/110",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/102",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 8
+    },
+    {
+      "task_id": "HumanEval/120",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/117",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/118",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/122",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/115",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/119",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/123",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/125",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/126",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/128",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/114",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 8
+    },
+    {
+      "task_id": "HumanEval/92",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 15,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/130",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/133",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/131",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/135",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/129",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/132",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/103",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/139",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/140",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/127",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/142",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/138",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/144",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/134",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/143",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/147",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/146",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/121",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/145",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/149",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/151",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/152",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/124",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/136",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/153",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/154",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/158",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/141",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/159",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/161",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/157",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 5,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/162",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/156",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/163",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 7,
+      "num_correct_total": 6
+    },
+    {
+      "task_id": "HumanEval/148",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 8
+    },
+    {
+      "task_id": "HumanEval/155",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 9,
+      "num_correct_total": 5
+    },
+    {
+      "task_id": "HumanEval/150",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 4
+    },
+    {
+      "task_id": "HumanEval/160",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 11,
+      "num_correct_total": 7
+    },
+    {
+      "task_id": "HumanEval/137",
+      "dataset": "humaneval",
+      "oracle_solved": true,
+      "num_candidates_total": 21,
+      "num_correct_total": 5
+    }
+  ],
+  "anomalies": []
+}

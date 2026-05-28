@@ -1,0 +1,185 @@
+# 📊 Multi-Agent Evaluation Report
+
+**Generated**: 2026-05-28 21:46:08  
+**Model**: `deepseek-ai/deepseek-coder-6.7b-instruct`  
+**Experiment Protocol**:
+| Parameter | Value |
+|-----------|-------|
+| k (samples) | 5 |
+| Temperature | [0.3, 0.8] |
+| Repair Rounds | 2 |
+| Fixes per Failure | 2 |
+| Execution Timeout | 5.0s |
+
+---
+
+> **Consistency Checks**: ✅ All checks passed
+
+## 1. Summary Table
+
+| Dataset | pass@1 | pass@5 | pass@10 | pass@10 (after repair) | Oracle solve rate | Avg Score |
+|---------|--------|--------|---------|-----------------------|---------------|-----------|
+| **HUMANEVAL** | 0.850 | 0.976 | N/A | N/A | 1.000 | 0.850 |
+| **OVERALL** | 0.850 | 0.976 | N/A | N/A | 1.000 | 0.850 |
+
+## 2. Detailed Metrics
+
+### 2.1 Generation Performance
+
+| Metric | Value |
+|--------|-------|
+| pass@1 (before repair) | 0.8500 |
+| pass@5 (before repair) | 0.9756 |
+| pass@10 (before repair) | N/A |
+| % Problems Solved | 97.6% |
+| Problems Solved | 160/164 |
+| Avg Test Pass Rate | 0.8500 |
+
+### 2.2 Execution Statistics
+
+| Metric | Value |
+|--------|-------|
+| Total Executions | 1,194 |
+| Successes | 939 |
+| Failures | 255 |
+| Success Rate | 78.6% |
+| Avg Executions/Problem | 7.3 |
+| Avg Test Pass Rate | 0.8679 |
+
+### 2.3 Repair Effectiveness
+
+| Metric | Value |
+|--------|-------|
+| pass@1 (after repair) | 0.9951 |
+| pass@5 (after repair) | 1.0000 |
+| pass@10 (after repair) | N/A |
+| Repair Success Rate | 196.7% |
+| Candidates Fixed | 242/123 |
+| Δ pass@1 | 0.1451 |
+| Δ pass@10 | N/A |
+
+**Per-Round Breakdown:**
+
+| Round | Fixed | Attempted | Fix Rate |
+|-------|-------|-----------|----------|
+| Round 1 | 182 | 246 | 74.0% |
+| Round 2 | 60 | 128 | 46.9% |
+
+### 2.4 Efficiency & Cost
+
+| Metric | Value |
+|--------|-------|
+| Avg Executions/Solution | 7.3 |
+| Avg Latency/Problem | 9.00s |
+| Latency: Generation | 4.02s |
+| Latency: Execution | 0.07s |
+| Latency: Repair | 4.91s |
+| Cost/Problem | $0.0062 |
+| Cost/Solved Problem | $0.0062 |
+| Marginal Cost of Repair | $0.5592 |
+| Total Cost | $1.02 |
+
+## 3. Tradeoff Analysis
+
+### 3.1 Latency vs Accuracy (Varying k)
+
+| k | Accuracy (pass@k) | Avg Latency | Efficiency |
+|---|-------------------|-------------|------------|
+| 1 | 0.8500 | 0.82s | 1.0395 |
+| 2 | 0.9396 | 1.64s | 0.5745 |
+| 3 | 0.9604 | 2.45s | 0.3915 |
+| 5 | 0.9756 | 4.09s | 0.2386 |
+
+### 3.2 Cost vs Performance (Varying Repair Rounds)
+
+| Repair Rounds | Accuracy | Avg Latency | Marginal Gain |
+|---------------|----------|-------------|---------------|
+| 0 | 0.8500 | 4.09s | +0.0000 |
+| 1 | 0.9744 | 6.54s | +0.1244 |
+| 2 | 0.9951 | 9.00s | +0.0207 |
+| 3 | 0.9951 | 11.45s | +0.0000 |
+
+### 3.3 Optimal Operating Point
+
+| Parameter | Value |
+|-----------|-------|
+| Best k | 1 |
+| Best k Accuracy | 0.8500 |
+| Best k Latency | 0.82s |
+| Optimal Repair Rounds | 2 |
+
+## 4. Error Analysis
+
+### 4.1 Error Distribution (Aggregated)
+
+| Group | Count | Percentage |
+|-------|-------|------------|
+| **SYNTAX** | 204 | 80.0% |
+| **RUNTIME** | 51 | 20.0% |
+| **LOGICAL** | 0 | 0.0% |
+| **TIMEOUT** | 0 | 0.0% |
+
+### 4.2 Error Distribution (Granular)
+
+| Error Type | Count | Percentage |
+|------------|-------|------------|
+| syntax_error | 204 | 80.0% |
+| runtime_type | 44 | 17.3% |
+| runtime_value | 7 | 2.7% |
+
+### 4.3 Repairability Insights
+
+| Error Type | Total | Repaired | Repair Rate |
+|------------|-------|----------|-------------|
+| syntax_error | 204 | 0 | 0.0% |
+| runtime_type | 44 | 0 | 0.0% |
+| runtime_value | 7 | 0 | 0.0% |
+
+**Most Fixable Error Types (ranked):**
+1. `syntax_error` — 0.0% repair rate
+2. `runtime_type` — 0.0% repair rate
+3. `runtime_value` — 0.0% repair rate
+
+
+## 5. Insights
+
+### 5.1 Strengths
+- Strong base generation: pass@1 = 0.850
+- Repair loop adds +0.145 to pass@1
+- High oracle ceiling: 100.0% solvable with best selection
+- Repair fixes 196.7% of failed candidates
+
+### 5.2 Weaknesses
+- Significant diminishing returns from round 1 to 2
+
+### 5.3 Bottlenecks
+- Repair is the primary bottleneck (55% of total latency)
+
+### 5.4 Gap to Oracle
+- Oracle pass@1: 1.000
+- Best achieved pass@1: 0.995
+- Gap: 0.005
+- 4 problems were solved ONLY through repair
+
+## 6. Conclusions
+
+### 6.1 Effectiveness
+**High effectiveness**: The system achieves pass@1 of 0.995 after repair.
+The repair loop improves pass@1 by +0.145 (0.850 → 0.995).
+Oracle ceiling is 100.0%, indicating the potential with perfect selection.
+
+### 6.2 Scalability
+Good scalability characteristics with low per-problem latency.
+Average latency per problem: 9.00s.
+Total evaluation cost: $1.02.
+
+### 6.3 Compute-Efficiency Tradeoffs
+Repair provides +0.145 pass@1 improvement at $0.56 marginal cost ($0.26 per unit improvement).
+
+### 6.4 Deployment Suitability
+✅ **Suitable** for production deployment with acceptable accuracy and latency.
+
+---
+
+*Report generated by the Multi-Agent Evaluation System*
+*All metrics are execution-based (unit test correctness). No assumptions or heuristics.*

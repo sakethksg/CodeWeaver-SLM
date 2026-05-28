@@ -1,0 +1,21 @@
+{
+  "agent": "Efficiency & Cost Agent",
+  "avg_executions_per_successful_solution": 7.280487804878049,
+  "avg_latency_per_problem": 8.998912524554747,
+  "latency_breakdown": {
+    "generation": 4.016831528496213,
+    "execution": 0.07175657166545733,
+    "repair": 4.910324424393077
+  },
+  "total_compute_time": 1475.8216540269786,
+  "cost_per_problem": 0.006249244808718575,
+  "cost_per_solved_problem": 0.006249244808718575,
+  "total_cost": 1.0248761486298463,
+  "marginal_cost_of_repair": 0.5592313927781005,
+  "solved_only_by_repair": 4,
+  "token_usage": {
+    "total_input_tokens": 64988,
+    "total_output_tokens": 136116
+  },
+  "anomalies": []
+}
