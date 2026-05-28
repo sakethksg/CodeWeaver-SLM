@@ -11,28 +11,1363 @@
     "execution_timeout": 5.0
   },
   "agent_results": {
-    "generation_eval": {
-      "agent": "Generation Evaluation Agent",
-      "pass_at_k_before_repair": {
-        "pass@1": 0.8499999999999999,
-        "pass@5": 0.975609756097561,
-        "pass@10": null
+    "efficiency_cost": {
+      "agent": "Efficiency & Cost Agent",
+      "avg_executions_per_successful_solution": 7.2317073170731705,
+      "avg_latency_per_problem": 9.757258217331737,
+      "latency_breakdown": {
+        "generation": 4.180557882304661,
+        "execution": 0.19375606452643007,
+        "repair": 5.382944270500646
       },
-      "pct_problems_solved": 97.5609756097561,
-      "problems_solved": 160,
-      "total_problems": 164,
-      "avg_test_pass_rate": 0.85,
+      "total_compute_time": 1600.190347642405,
+      "cost_per_problem": 0.006775873762035929,
+      "cost_per_solved_problem": 0.006775873762035929,
+      "total_cost": 1.1112432969738923,
+      "marginal_cost_of_repair": 0.6130575419181292,
+      "solved_only_by_repair": 6,
+      "token_usage": {
+        "total_input_tokens": 64988,
+        "total_output_tokens": 142468
+      },
+      "anomalies": []
+    },
+    "execution_metrics": {
+      "agent": "Execution Metrics Agent",
+      "total_executions": 1186,
+      "total_successes": 923,
+      "total_failures": 263,
+      "success_rate": 77.82462057335582,
+      "avg_executions_per_problem": 7.2317073170731705,
+      "avg_test_pass_rate": 0.8752697282639563,
       "per_problem": [
+        {
+          "task_id": "HumanEval/7",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/2",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
         {
           "task_id": "HumanEval/5",
           "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
+          "total_executions": 9,
+          "successes": 6,
+          "failures": 3,
+          "avg_test_pass_rate": 0.6666666666666666
+        },
+        {
+          "task_id": "HumanEval/10",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
           "avg_test_pass_rate": 1.0
         },
+        {
+          "task_id": "HumanEval/0",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/8",
+          "dataset": "humaneval",
+          "total_executions": 15,
+          "successes": 10,
+          "failures": 5,
+          "avg_test_pass_rate": 0.6666666666666666
+        },
+        {
+          "task_id": "HumanEval/4",
+          "dataset": "humaneval",
+          "total_executions": 13,
+          "successes": 9,
+          "failures": 4,
+          "avg_test_pass_rate": 0.6923076923076923
+        },
+        {
+          "task_id": "HumanEval/3",
+          "dataset": "humaneval",
+          "total_executions": 15,
+          "successes": 10,
+          "failures": 5,
+          "avg_test_pass_rate": 0.6666666666666666
+        },
+        {
+          "task_id": "HumanEval/14",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/13",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/15",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/6",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/9",
+          "dataset": "humaneval",
+          "total_executions": 15,
+          "successes": 9,
+          "failures": 6,
+          "avg_test_pass_rate": 0.6
+        },
+        {
+          "task_id": "HumanEval/1",
+          "dataset": "humaneval",
+          "total_executions": 13,
+          "successes": 9,
+          "failures": 4,
+          "avg_test_pass_rate": 0.6923076923076923
+        },
+        {
+          "task_id": "HumanEval/12",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/21",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/23",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/16",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/11",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/26",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/22",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/19",
+          "dataset": "humaneval",
+          "total_executions": 9,
+          "successes": 7,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7777777777777778
+        },
+        {
+          "task_id": "HumanEval/28",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/29",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/20",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/17",
+          "dataset": "humaneval",
+          "total_executions": 15,
+          "successes": 10,
+          "failures": 5,
+          "avg_test_pass_rate": 0.6666666666666666
+        },
+        {
+          "task_id": "HumanEval/30",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/25",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/35",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/34",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/31",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/36",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/24",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/40",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/33",
+          "dataset": "humaneval",
+          "total_executions": 9,
+          "successes": 7,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7777777777777778
+        },
+        {
+          "task_id": "HumanEval/32",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/42",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/43",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/41",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/37",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/44",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/45",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/48",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/38",
+          "dataset": "humaneval",
+          "total_executions": 15,
+          "successes": 10,
+          "failures": 5,
+          "avg_test_pass_rate": 0.6666666666666666
+        },
+        {
+          "task_id": "HumanEval/49",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/51",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/52",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/53",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/55",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/54",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/56",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/50",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/59",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/58",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/60",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/61",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/62",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/63",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/64",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/66",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/67",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/27",
+          "dataset": "humaneval",
+          "total_executions": 13,
+          "successes": 8,
+          "failures": 5,
+          "avg_test_pass_rate": 0.6153846153846154
+        },
+        {
+          "task_id": "HumanEval/68",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/69",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/70",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/71",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/39",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 7,
+          "failures": 4,
+          "avg_test_pass_rate": 0.6363636363636364
+        },
+        {
+          "task_id": "HumanEval/46",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 6,
+          "failures": 5,
+          "avg_test_pass_rate": 0.5454545454545454
+        },
+        {
+          "task_id": "HumanEval/47",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 4,
+          "failures": 7,
+          "avg_test_pass_rate": 0.6545454545454544
+        },
+        {
+          "task_id": "HumanEval/73",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/74",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/77",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/78",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/80",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/79",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/81",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/83",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/84",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/85",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/86",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/87",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/88",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/72",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 6,
+          "failures": 5,
+          "avg_test_pass_rate": 0.5454545454545454
+        },
+        {
+          "task_id": "HumanEval/18",
+          "dataset": "humaneval",
+          "total_executions": 23,
+          "successes": 6,
+          "failures": 17,
+          "avg_test_pass_rate": 0.29347826086956524
+        },
+        {
+          "task_id": "HumanEval/89",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/91",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/93",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/94",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/95",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/90",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/96",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/57",
+          "dataset": "humaneval",
+          "total_executions": 21,
+          "successes": 5,
+          "failures": 16,
+          "avg_test_pass_rate": 0.23809523809523808
+        },
+        {
+          "task_id": "HumanEval/75",
+          "dataset": "humaneval",
+          "total_executions": 17,
+          "successes": 5,
+          "failures": 12,
+          "avg_test_pass_rate": 0.29411764705882354
+        },
+        {
+          "task_id": "HumanEval/99",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/101",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/65",
+          "dataset": "humaneval",
+          "total_executions": 21,
+          "successes": 4,
+          "failures": 17,
+          "avg_test_pass_rate": 0.19047619047619047
+        },
+        {
+          "task_id": "HumanEval/98",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/103",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/76",
+          "dataset": "humaneval",
+          "total_executions": 17,
+          "successes": 4,
+          "failures": 13,
+          "avg_test_pass_rate": 0.23529411764705882
+        },
+        {
+          "task_id": "HumanEval/104",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/105",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/106",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/107",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/109",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/102",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/97",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 5,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7142857142857143
+        },
+        {
+          "task_id": "HumanEval/112",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/114",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/113",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/111",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/117",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/116",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/115",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/120",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/121",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/82",
+          "dataset": "humaneval",
+          "total_executions": 19,
+          "successes": 10,
+          "failures": 9,
+          "avg_test_pass_rate": 0.5263157894736842
+        },
+        {
+          "task_id": "HumanEval/122",
+          "dataset": "humaneval",
+          "total_executions": 9,
+          "successes": 7,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7777777777777778
+        },
+        {
+          "task_id": "HumanEval/119",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/118",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/124",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/126",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/127",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/123",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 5,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7142857142857143
+        },
+        {
+          "task_id": "HumanEval/129",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/100",
+          "dataset": "humaneval",
+          "total_executions": 13,
+          "successes": 5,
+          "failures": 8,
+          "avg_test_pass_rate": 0.38461538461538464
+        },
+        {
+          "task_id": "HumanEval/131",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/110",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 4,
+          "failures": 7,
+          "avg_test_pass_rate": 0.36363636363636365
+        },
+        {
+          "task_id": "HumanEval/92",
+          "dataset": "humaneval",
+          "total_executions": 17,
+          "successes": 4,
+          "failures": 13,
+          "avg_test_pass_rate": 0.23529411764705882
+        },
+        {
+          "task_id": "HumanEval/133",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/135",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/108",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 6,
+          "failures": 5,
+          "avg_test_pass_rate": 0.5454545454545454
+        },
+        {
+          "task_id": "HumanEval/134",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/139",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/128",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 5,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7142857142857143
+        },
+        {
+          "task_id": "HumanEval/132",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/140",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/142",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/143",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/141",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/125",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 5,
+          "failures": 2,
+          "avg_test_pass_rate": 0.7142857142857143
+        },
+        {
+          "task_id": "HumanEval/145",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/147",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/138",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/144",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/151",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/150",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/152",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/146",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/153",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/154",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/157",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/149",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 5,
+          "failures": 2,
+          "avg_test_pass_rate": 0.8775510204081632
+        },
+        {
+          "task_id": "HumanEval/136",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/159",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/130",
+          "dataset": "humaneval",
+          "total_executions": 13,
+          "successes": 8,
+          "failures": 5,
+          "avg_test_pass_rate": 0.6153846153846154
+        },
+        {
+          "task_id": "HumanEval/156",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/161",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/162",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/160",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/163",
+          "dataset": "humaneval",
+          "total_executions": 5,
+          "successes": 5,
+          "failures": 0,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/148",
+          "dataset": "humaneval",
+          "total_executions": 11,
+          "successes": 8,
+          "failures": 3,
+          "avg_test_pass_rate": 0.7272727272727273
+        },
+        {
+          "task_id": "HumanEval/158",
+          "dataset": "humaneval",
+          "total_executions": 7,
+          "successes": 6,
+          "failures": 1,
+          "avg_test_pass_rate": 0.8571428571428571
+        },
+        {
+          "task_id": "HumanEval/137",
+          "dataset": "humaneval",
+          "total_executions": 15,
+          "successes": 7,
+          "failures": 8,
+          "avg_test_pass_rate": 0.4666666666666667
+        },
+        {
+          "task_id": "HumanEval/155",
+          "dataset": "humaneval",
+          "total_executions": 13,
+          "successes": 7,
+          "failures": 6,
+          "avg_test_pass_rate": 0.5384615384615384
+        }
+      ],
+      "anomalies": []
+    },
+    "generation_eval": {
+      "agent": "Generation Evaluation Agent",
+      "pass_at_k_before_repair": {
+        "pass@1": 0.8426829268292683,
+        "pass@5": 0.9634146341463414,
+        "pass@10": null
+      },
+      "pct_problems_solved": 96.34146341463415,
+      "problems_solved": 158,
+      "total_problems": 164,
+      "avg_test_pass_rate": 0.8443554006968642,
+      "per_problem": [
         {
           "task_id": "HumanEval/7",
           "dataset": "humaneval",
@@ -44,14 +1379,24 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/4",
+          "task_id": "HumanEval/2",
           "dataset": "humaneval",
           "n": 5,
-          "c": 0,
-          "pass@1": 0.0,
-          "pass@5": 0.0,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.0
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/5",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
         },
         {
           "task_id": "HumanEval/10",
@@ -67,14 +1412,14 @@
           "task_id": "HumanEval/0",
           "dataset": "humaneval",
           "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
+          "c": 2,
+          "pass@1": 0.4,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.6
+          "avg_test_pass_rate": 0.4
         },
         {
-          "task_id": "HumanEval/9",
+          "task_id": "HumanEval/8",
           "dataset": "humaneval",
           "n": 5,
           "c": 0,
@@ -84,7 +1429,7 @@
           "avg_test_pass_rate": 0.0
         },
         {
-          "task_id": "HumanEval/3",
+          "task_id": "HumanEval/4",
           "dataset": "humaneval",
           "n": 5,
           "c": 1,
@@ -94,7 +1439,27 @@
           "avg_test_pass_rate": 0.2
         },
         {
-          "task_id": "HumanEval/11",
+          "task_id": "HumanEval/3",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 0,
+          "pass@1": 0.0,
+          "pass@5": 0.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.0
+        },
+        {
+          "task_id": "HumanEval/14",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/13",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -102,16 +1467,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/8",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 1,
-          "pass@1": 0.19999999999999996,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.2
         },
         {
           "task_id": "HumanEval/15",
@@ -124,14 +1479,34 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/16",
+          "task_id": "HumanEval/6",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/9",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 0,
+          "pass@1": 0.0,
+          "pass@5": 0.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.0
+        },
+        {
+          "task_id": "HumanEval/1",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 1,
+          "pass@1": 0.19999999999999996,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.2
         },
         {
           "task_id": "HumanEval/12",
@@ -144,17 +1519,7 @@
           "avg_test_pass_rate": 0.4
         },
         {
-          "task_id": "HumanEval/14",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 1,
-          "pass@1": 0.19999999999999996,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.2
-        },
-        {
-          "task_id": "HumanEval/19",
+          "task_id": "HumanEval/21",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -162,26 +1527,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/21",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/6",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 2,
-          "pass@1": 0.4,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.4
         },
         {
           "task_id": "HumanEval/23",
@@ -194,34 +1539,24 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/24",
+          "task_id": "HumanEval/16",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/20",
+          "task_id": "HumanEval/11",
           "dataset": "humaneval",
           "n": 5,
-          "c": 1,
-          "pass@1": 0.19999999999999996,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.2
-        },
-        {
-          "task_id": "HumanEval/22",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/26",
@@ -234,14 +1569,34 @@
           "avg_test_pass_rate": 1.0
         },
         {
+          "task_id": "HumanEval/22",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/19",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
+        },
+        {
           "task_id": "HumanEval/28",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/29",
@@ -252,6 +1607,26 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/20",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 2,
+          "pass@1": 0.4,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.4
+        },
+        {
+          "task_id": "HumanEval/17",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 0,
+          "pass@1": 0.0,
+          "pass@5": 0.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.0
         },
         {
           "task_id": "HumanEval/30",
@@ -274,7 +1649,7 @@
           "avg_test_pass_rate": 0.4
         },
         {
-          "task_id": "HumanEval/31",
+          "task_id": "HumanEval/35",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -282,16 +1657,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/17",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 0,
-          "pass@1": 0.0,
-          "pass@5": 0.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.0
         },
         {
           "task_id": "HumanEval/34",
@@ -304,17 +1669,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/13",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/33",
+          "task_id": "HumanEval/31",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -322,16 +1677,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/35",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/36",
@@ -344,27 +1689,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/27",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/37",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/39",
+          "task_id": "HumanEval/24",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -375,6 +1700,26 @@
         },
         {
           "task_id": "HumanEval/40",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/33",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
+        },
+        {
+          "task_id": "HumanEval/32",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -407,6 +1752,16 @@
           "task_id": "HumanEval/41",
           "dataset": "humaneval",
           "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/37",
+          "dataset": "humaneval",
+          "n": 5,
           "c": 4,
           "pass@1": 0.8,
           "pass@5": 1.0,
@@ -414,34 +1769,24 @@
           "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/46",
+          "task_id": "HumanEval/44",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/47",
+          "task_id": "HumanEval/45",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/32",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/48",
@@ -454,16 +1799,6 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/1",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
           "task_id": "HumanEval/38",
           "dataset": "humaneval",
           "n": 5,
@@ -474,27 +1809,7 @@
           "avg_test_pass_rate": 0.0
         },
         {
-          "task_id": "HumanEval/2",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
           "task_id": "HumanEval/49",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/53",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -504,7 +1819,27 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/45",
+          "task_id": "HumanEval/51",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/52",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/53",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -524,17 +1859,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/51",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
-        },
-        {
-          "task_id": "HumanEval/58",
+          "task_id": "HumanEval/54",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -544,14 +1869,24 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/44",
+          "task_id": "HumanEval/56",
           "dataset": "humaneval",
           "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.6
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/50",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/59",
@@ -564,7 +1899,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/50",
+          "task_id": "HumanEval/58",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -594,17 +1929,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/64",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/54",
+          "task_id": "HumanEval/62",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -614,14 +1939,24 @@
           "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/62",
+          "task_id": "HumanEval/63",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/64",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/66",
@@ -644,14 +1979,14 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/63",
+          "task_id": "HumanEval/27",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 3,
+          "pass@1": 0.6,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 0.6
         },
         {
           "task_id": "HumanEval/68",
@@ -677,11 +2012,51 @@
           "task_id": "HumanEval/70",
           "dataset": "humaneval",
           "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/71",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/39",
+          "dataset": "humaneval",
+          "n": 5,
           "c": 4,
           "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/46",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/47",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.96
         },
         {
           "task_id": "HumanEval/73",
@@ -704,47 +2079,17 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/18",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
-        },
-        {
-          "task_id": "HumanEval/72",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
-        },
-        {
           "task_id": "HumanEval/77",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/78",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/79",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -764,7 +2109,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/56",
+          "task_id": "HumanEval/79",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -772,26 +2117,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/57",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/83",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/81",
@@ -804,7 +2129,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/85",
+          "task_id": "HumanEval/83",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -824,27 +2149,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/87",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/52",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
-        },
-        {
-          "task_id": "HumanEval/86",
+          "task_id": "HumanEval/85",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -854,7 +2159,17 @@
           "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/90",
+          "task_id": "HumanEval/86",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/87",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -867,14 +2182,14 @@
           "task_id": "HumanEval/88",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/71",
+          "task_id": "HumanEval/72",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -882,29 +2197,39 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/18",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 0,
+          "pass@1": 0.0,
+          "pass@5": 0.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.0
+        },
+        {
+          "task_id": "HumanEval/89",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/91",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/93",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/75",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/95",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -924,7 +2249,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/97",
+          "task_id": "HumanEval/95",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -932,6 +2257,16 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/90",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/96",
@@ -944,7 +2279,27 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/98",
+          "task_id": "HumanEval/57",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 1,
+          "pass@1": 0.19999999999999996,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.2
+        },
+        {
+          "task_id": "HumanEval/75",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
+        },
+        {
+          "task_id": "HumanEval/99",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -952,16 +2307,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/76",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/101",
@@ -974,16 +2319,6 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/99",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
           "task_id": "HumanEval/65",
           "dataset": "humaneval",
           "n": 5,
@@ -994,7 +2329,7 @@
           "avg_test_pass_rate": 0.2
         },
         {
-          "task_id": "HumanEval/104",
+          "task_id": "HumanEval/98",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1004,7 +2339,17 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/100",
+          "task_id": "HumanEval/103",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/76",
           "dataset": "humaneval",
           "n": 5,
           "c": 3,
@@ -1012,6 +2357,16 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 0.6
+        },
+        {
+          "task_id": "HumanEval/104",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/105",
@@ -1034,16 +2389,6 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/91",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
-        },
-        {
           "task_id": "HumanEval/107",
           "dataset": "humaneval",
           "n": 5,
@@ -1054,87 +2399,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/89",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/108",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
           "task_id": "HumanEval/109",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/112",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/82",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
-        },
-        {
-          "task_id": "HumanEval/113",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/116",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/111",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/110",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1154,7 +2419,17 @@
           "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/120",
+          "task_id": "HumanEval/97",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/112",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1162,6 +2437,36 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/114",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/113",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/111",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/117",
@@ -1174,27 +2479,57 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/118",
+          "task_id": "HumanEval/116",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/122",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
           "task_id": "HumanEval/115",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/120",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/121",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/82",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 2,
+          "pass@1": 0.4,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.4
+        },
+        {
+          "task_id": "HumanEval/122",
           "dataset": "humaneval",
           "n": 5,
           "c": 3,
@@ -1207,24 +2542,24 @@
           "task_id": "HumanEval/119",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/123",
+          "task_id": "HumanEval/118",
           "dataset": "humaneval",
           "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
+          "c": 4,
+          "pass@1": 0.8,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 1.0
+          "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/125",
+          "task_id": "HumanEval/124",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1244,7 +2579,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/128",
+          "task_id": "HumanEval/127",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1254,7 +2589,47 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/114",
+          "task_id": "HumanEval/123",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/129",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/100",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
+        },
+        {
+          "task_id": "HumanEval/131",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/110",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1274,27 +2649,7 @@
           "avg_test_pass_rate": 0.6
         },
         {
-          "task_id": "HumanEval/130",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
           "task_id": "HumanEval/133",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/131",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1314,27 +2669,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/129",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/132",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/103",
+          "task_id": "HumanEval/108",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1344,7 +2679,37 @@
           "avg_test_pass_rate": 0.8
         },
         {
+          "task_id": "HumanEval/134",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
           "task_id": "HumanEval/139",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/128",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/132",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1364,16 +2729,6 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/127",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
           "task_id": "HumanEval/142",
           "dataset": "humaneval",
           "n": 5,
@@ -1382,36 +2737,6 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/138",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/144",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 5,
-          "pass@1": 1.0,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/134",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.6
         },
         {
           "task_id": "HumanEval/143",
@@ -1424,27 +2749,17 @@
           "avg_test_pass_rate": 0.8
         },
         {
-          "task_id": "HumanEval/147",
+          "task_id": "HumanEval/141",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/146",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/121",
+          "task_id": "HumanEval/125",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1457,14 +2772,24 @@
           "task_id": "HumanEval/145",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/149",
+          "task_id": "HumanEval/147",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
+        },
+        {
+          "task_id": "HumanEval/138",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1472,6 +2797,16 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 0.8
+        },
+        {
+          "task_id": "HumanEval/144",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 5,
+          "pass@1": 1.0,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/151",
@@ -1484,6 +2819,16 @@
           "avg_test_pass_rate": 1.0
         },
         {
+          "task_id": "HumanEval/150",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.8
+        },
+        {
           "task_id": "HumanEval/152",
           "dataset": "humaneval",
           "n": 5,
@@ -1494,17 +2839,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/124",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/136",
+          "task_id": "HumanEval/146",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1527,14 +2862,14 @@
           "task_id": "HumanEval/154",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/158",
+          "task_id": "HumanEval/157",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1544,7 +2879,17 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/141",
+          "task_id": "HumanEval/149",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 4,
+          "pass@1": 0.8,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.9142857142857143
+        },
+        {
+          "task_id": "HumanEval/136",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1564,7 +2909,17 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/161",
+          "task_id": "HumanEval/130",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
+        },
+        {
+          "task_id": "HumanEval/156",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1574,7 +2929,7 @@
           "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/157",
+          "task_id": "HumanEval/161",
           "dataset": "humaneval",
           "n": 5,
           "c": 5,
@@ -1587,31 +2942,31 @@
           "task_id": "HumanEval/162",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 1.0
         },
         {
-          "task_id": "HumanEval/156",
+          "task_id": "HumanEval/160",
           "dataset": "humaneval",
           "n": 5,
-          "c": 3,
-          "pass@1": 0.6,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.6
+          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/163",
           "dataset": "humaneval",
           "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
+          "c": 5,
+          "pass@1": 1.0,
           "pass@5": 1.0,
           "pass@10": null,
-          "avg_test_pass_rate": 0.8
+          "avg_test_pass_rate": 1.0
         },
         {
           "task_id": "HumanEval/148",
@@ -1624,27 +2979,7 @@
           "avg_test_pass_rate": 0.4
         },
         {
-          "task_id": "HumanEval/155",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/150",
-          "dataset": "humaneval",
-          "n": 5,
-          "c": 4,
-          "pass@1": 0.8,
-          "pass@5": 1.0,
-          "pass@10": null,
-          "avg_test_pass_rate": 0.8
-        },
-        {
-          "task_id": "HumanEval/160",
+          "task_id": "HumanEval/158",
           "dataset": "humaneval",
           "n": 5,
           "c": 4,
@@ -1662,1395 +2997,60 @@
           "pass@5": 1.0,
           "pass@10": null,
           "avg_test_pass_rate": 0.4
+        },
+        {
+          "task_id": "HumanEval/155",
+          "dataset": "humaneval",
+          "n": 5,
+          "c": 3,
+          "pass@1": 0.6,
+          "pass@5": 1.0,
+          "pass@10": null,
+          "avg_test_pass_rate": 0.6
         }
       ],
-      "anomalies": []
-    },
-    "efficiency_cost": {
-      "agent": "Efficiency & Cost Agent",
-      "avg_executions_per_successful_solution": 7.280487804878049,
-      "avg_latency_per_problem": 8.998912524554747,
-      "latency_breakdown": {
-        "generation": 4.016831528496213,
-        "execution": 0.07175657166545733,
-        "repair": 4.910324424393077
-      },
-      "total_compute_time": 1475.8216540269786,
-      "cost_per_problem": 0.006249244808718575,
-      "cost_per_solved_problem": 0.006249244808718575,
-      "total_cost": 1.0248761486298463,
-      "marginal_cost_of_repair": 0.5592313927781005,
-      "solved_only_by_repair": 4,
-      "token_usage": {
-        "total_input_tokens": 64988,
-        "total_output_tokens": 136116
-      },
       "anomalies": []
     },
     "repair_analysis": {
       "agent": "Repair Analysis Agent",
       "pass_at_k_after_repair": {
-        "pass@1": 0.9951219512195121,
+        "pass@1": 0.9902439024390243,
         "pass@5": 1.0,
         "pass@10": null
       },
       "pass_at_k_before_repair": {
-        "pass@1": 0.8499999999999999,
-        "pass@5": 0.975609756097561,
+        "pass@1": 0.8426829268292683,
+        "pass@5": 0.9634146341463414,
         "pass@10": null
       },
       "delta_improvement": {
-        "delta_pass@1": 0.1451219512195122,
-        "delta_pass@5": 0.024390243902439046,
+        "delta_pass@1": 0.147560975609756,
+        "delta_pass@5": 0.03658536585365857,
         "delta_pass@10": null
       },
-      "repair_success_rate": 196.7479674796748,
-      "total_failed_candidates": 123,
-      "total_fixed_by_repair": 242,
-      "candidates_fixed_ratio": "242/123",
+      "repair_success_rate": 93.7984496124031,
+      "total_failed_candidates": 129,
+      "total_fixed_by_repair": 121,
+      "candidates_fixed_ratio": "121/129",
       "per_round_analysis": [
         {
           "round": 1,
-          "candidates_fixed": 182,
-          "candidates_attempted": 246,
-          "fix_rate": 73.98373983739837
+          "candidates_fixed": 102,
+          "candidates_attempted": 129,
+          "fix_rate": 79.06976744186046
         },
         {
           "round": 2,
-          "candidates_fixed": 60,
-          "candidates_attempted": 128,
-          "fix_rate": 46.875
+          "candidates_fixed": 19,
+          "candidates_attempted": 27,
+          "fix_rate": 70.37037037037037
         }
       ],
       "diminishing_returns": [
         {
           "from_round": 1,
           "to_round": 2,
-          "rate_change": -27.108739837398375
-        }
-      ],
-      "anomalies": []
-    },
-    "execution_metrics": {
-      "agent": "Execution Metrics Agent",
-      "total_executions": 1194,
-      "total_successes": 939,
-      "total_failures": 255,
-      "success_rate": 78.64321608040201,
-      "avg_executions_per_problem": 7.280487804878049,
-      "avg_test_pass_rate": 0.8679479300599893,
-      "per_problem": [
-        {
-          "task_id": "HumanEval/5",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/7",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/4",
-          "dataset": "humaneval",
-          "total_executions": 15,
-          "successes": 10,
-          "failures": 5,
-          "avg_test_pass_rate": 0.6666666666666666
-        },
-        {
-          "task_id": "HumanEval/10",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/0",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/9",
-          "dataset": "humaneval",
-          "total_executions": 15,
-          "successes": 10,
-          "failures": 5,
-          "avg_test_pass_rate": 0.6666666666666666
-        },
-        {
-          "task_id": "HumanEval/3",
-          "dataset": "humaneval",
-          "total_executions": 15,
-          "successes": 8,
-          "failures": 7,
-          "avg_test_pass_rate": 0.5333333333333333
-        },
-        {
-          "task_id": "HumanEval/11",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/8",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 9,
-          "failures": 4,
-          "avg_test_pass_rate": 0.6923076923076923
-        },
-        {
-          "task_id": "HumanEval/15",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/16",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/12",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 9,
-          "failures": 4,
-          "avg_test_pass_rate": 0.6923076923076923
-        },
-        {
-          "task_id": "HumanEval/14",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 9,
-          "failures": 4,
-          "avg_test_pass_rate": 0.6923076923076923
-        },
-        {
-          "task_id": "HumanEval/19",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/21",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/6",
-          "dataset": "humaneval",
-          "total_executions": 19,
-          "successes": 12,
-          "failures": 7,
-          "avg_test_pass_rate": 0.631578947368421
-        },
-        {
-          "task_id": "HumanEval/23",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/24",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/20",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 9,
-          "failures": 4,
-          "avg_test_pass_rate": 0.6923076923076923
-        },
-        {
-          "task_id": "HumanEval/22",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/26",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/28",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/29",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/30",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/25",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 8,
-          "failures": 3,
-          "avg_test_pass_rate": 0.7272727272727273
-        },
-        {
-          "task_id": "HumanEval/31",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/17",
-          "dataset": "humaneval",
-          "total_executions": 21,
-          "successes": 13,
-          "failures": 8,
-          "avg_test_pass_rate": 0.6190476190476191
-        },
-        {
-          "task_id": "HumanEval/34",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/13",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/33",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/35",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/36",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/27",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/37",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/39",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/40",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/42",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/43",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/41",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/46",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/47",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/32",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/48",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/1",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 5,
-          "failures": 6,
-          "avg_test_pass_rate": 0.45454545454545453
-        },
-        {
-          "task_id": "HumanEval/38",
-          "dataset": "humaneval",
-          "total_executions": 15,
-          "successes": 10,
-          "failures": 5,
-          "avg_test_pass_rate": 0.6666666666666666
-        },
-        {
-          "task_id": "HumanEval/2",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 5,
-          "failures": 6,
-          "avg_test_pass_rate": 0.45454545454545453
-        },
-        {
-          "task_id": "HumanEval/49",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/53",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/45",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/55",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/51",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/58",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/44",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 6,
-          "failures": 7,
-          "avg_test_pass_rate": 0.46153846153846156
-        },
-        {
-          "task_id": "HumanEval/59",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/50",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/60",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/61",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/64",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/54",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/62",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/66",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/67",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/63",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/68",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/69",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/70",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/73",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/74",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/18",
-          "dataset": "humaneval",
-          "total_executions": 17,
-          "successes": 10,
-          "failures": 7,
-          "avg_test_pass_rate": 0.5882352941176471
-        },
-        {
-          "task_id": "HumanEval/72",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/77",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/78",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/79",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/80",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/56",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 4,
-          "failures": 7,
-          "avg_test_pass_rate": 0.36363636363636365
-        },
-        {
-          "task_id": "HumanEval/57",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 6,
-          "failures": 5,
-          "avg_test_pass_rate": 0.5454545454545454
-        },
-        {
-          "task_id": "HumanEval/83",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/81",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/85",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/84",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/87",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/52",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 6,
-          "failures": 7,
-          "avg_test_pass_rate": 0.46153846153846156
-        },
-        {
-          "task_id": "HumanEval/86",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/90",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/88",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/71",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 4,
-          "failures": 7,
-          "avg_test_pass_rate": 0.36363636363636365
-        },
-        {
-          "task_id": "HumanEval/93",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/75",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 7,
-          "failures": 4,
-          "avg_test_pass_rate": 0.6363636363636364
-        },
-        {
-          "task_id": "HumanEval/95",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/94",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/97",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/96",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/98",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/76",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 5,
-          "failures": 6,
-          "avg_test_pass_rate": 0.45454545454545453
-        },
-        {
-          "task_id": "HumanEval/101",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/99",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/65",
-          "dataset": "humaneval",
-          "total_executions": 17,
-          "successes": 8,
-          "failures": 9,
-          "avg_test_pass_rate": 0.47058823529411764
-        },
-        {
-          "task_id": "HumanEval/104",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/100",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/105",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/106",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/91",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 6,
-          "failures": 7,
-          "avg_test_pass_rate": 0.46153846153846156
-        },
-        {
-          "task_id": "HumanEval/107",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/89",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 4,
-          "failures": 7,
-          "avg_test_pass_rate": 0.36363636363636365
-        },
-        {
-          "task_id": "HumanEval/108",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/109",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/112",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/82",
-          "dataset": "humaneval",
-          "total_executions": 13,
-          "successes": 7,
-          "failures": 6,
-          "avg_test_pass_rate": 0.5384615384615384
-        },
-        {
-          "task_id": "HumanEval/113",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/116",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/111",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/110",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/102",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 8,
-          "failures": 3,
-          "avg_test_pass_rate": 0.7272727272727273
-        },
-        {
-          "task_id": "HumanEval/120",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/117",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/118",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/122",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/115",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/119",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/123",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/125",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/126",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/128",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/114",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 8,
-          "failures": 3,
-          "avg_test_pass_rate": 0.7272727272727273
-        },
-        {
-          "task_id": "HumanEval/92",
-          "dataset": "humaneval",
-          "total_executions": 15,
-          "successes": 6,
-          "failures": 9,
-          "avg_test_pass_rate": 0.4
-        },
-        {
-          "task_id": "HumanEval/130",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/133",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/131",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/135",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/129",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/132",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/103",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 6,
-          "failures": 5,
-          "avg_test_pass_rate": 0.5454545454545454
-        },
-        {
-          "task_id": "HumanEval/139",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/140",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/127",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/142",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/138",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/144",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/134",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/143",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/147",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/146",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/121",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 5,
-          "failures": 6,
-          "avg_test_pass_rate": 0.45454545454545453
-        },
-        {
-          "task_id": "HumanEval/145",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/149",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/151",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/152",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/124",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 6,
-          "failures": 5,
-          "avg_test_pass_rate": 0.5454545454545454
-        },
-        {
-          "task_id": "HumanEval/136",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/153",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/154",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/158",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/141",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 6,
-          "failures": 3,
-          "avg_test_pass_rate": 0.6666666666666666
-        },
-        {
-          "task_id": "HumanEval/159",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/161",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/157",
-          "dataset": "humaneval",
-          "total_executions": 5,
-          "successes": 5,
-          "failures": 0,
-          "avg_test_pass_rate": 1.0
-        },
-        {
-          "task_id": "HumanEval/162",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/156",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 7,
-          "failures": 2,
-          "avg_test_pass_rate": 0.7777777777777778
-        },
-        {
-          "task_id": "HumanEval/163",
-          "dataset": "humaneval",
-          "total_executions": 7,
-          "successes": 6,
-          "failures": 1,
-          "avg_test_pass_rate": 0.8571428571428571
-        },
-        {
-          "task_id": "HumanEval/148",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 8,
-          "failures": 3,
-          "avg_test_pass_rate": 0.7272727272727273
-        },
-        {
-          "task_id": "HumanEval/155",
-          "dataset": "humaneval",
-          "total_executions": 9,
-          "successes": 5,
-          "failures": 4,
-          "avg_test_pass_rate": 0.5555555555555556
-        },
-        {
-          "task_id": "HumanEval/150",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 4,
-          "failures": 7,
-          "avg_test_pass_rate": 0.36363636363636365
-        },
-        {
-          "task_id": "HumanEval/160",
-          "dataset": "humaneval",
-          "total_executions": 11,
-          "successes": 7,
-          "failures": 4,
-          "avg_test_pass_rate": 0.6363636363636364
-        },
-        {
-          "task_id": "HumanEval/137",
-          "dataset": "humaneval",
-          "total_executions": 21,
-          "successes": 5,
-          "failures": 16,
-          "avg_test_pass_rate": 0.23809523809523808
+          "rate_change": -8.699397071490097
         }
       ],
       "anomalies": []
@@ -3062,17 +3062,10 @@
       "oracle_solved_count": 164,
       "total_problems": 164,
       "gap_to_oracle": {
-        "from_generation_pass1": 0.15000000000000013,
-        "from_after_repair_pass1": 0.00487804878048792
+        "from_generation_pass1": 0.15731707317073174,
+        "from_after_repair_pass1": 0.00975609756097573
       },
       "per_problem": [
-        {
-          "task_id": "HumanEval/5",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
         {
           "task_id": "HumanEval/7",
           "dataset": "humaneval",
@@ -3081,11 +3074,18 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/4",
+          "task_id": "HumanEval/2",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 15,
-          "num_correct_total": 10
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/5",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 9,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/10",
@@ -3098,36 +3098,43 @@
           "task_id": "HumanEval/0",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
+          "num_candidates_total": 11,
+          "num_correct_total": 8
         },
         {
-          "task_id": "HumanEval/9",
+          "task_id": "HumanEval/8",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 15,
           "num_correct_total": 10
         },
         {
-          "task_id": "HumanEval/3",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 15,
-          "num_correct_total": 8
-        },
-        {
-          "task_id": "HumanEval/11",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/8",
+          "task_id": "HumanEval/4",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 13,
           "num_correct_total": 9
+        },
+        {
+          "task_id": "HumanEval/3",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 15,
+          "num_correct_total": 10
+        },
+        {
+          "task_id": "HumanEval/14",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/13",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/15",
@@ -3137,46 +3144,39 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/16",
+          "task_id": "HumanEval/6",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 11,
+          "num_correct_total": 8
+        },
+        {
+          "task_id": "HumanEval/9",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 15,
+          "num_correct_total": 9
+        },
+        {
+          "task_id": "HumanEval/1",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 13,
+          "num_correct_total": 9
         },
         {
           "task_id": "HumanEval/12",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 9
-        },
-        {
-          "task_id": "HumanEval/14",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 9
-        },
-        {
-          "task_id": "HumanEval/19",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 11,
+          "num_correct_total": 8
         },
         {
           "task_id": "HumanEval/21",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/6",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 19,
-          "num_correct_total": 12
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/23",
@@ -3186,25 +3186,18 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/24",
+          "task_id": "HumanEval/16",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/20",
+          "task_id": "HumanEval/11",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 9
-        },
-        {
-          "task_id": "HumanEval/22",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/26",
@@ -3214,11 +3207,25 @@
           "num_correct_total": 5
         },
         {
+          "task_id": "HumanEval/22",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/19",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 9,
+          "num_correct_total": 7
+        },
+        {
           "task_id": "HumanEval/28",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/29",
@@ -3226,6 +3233,20 @@
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/20",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 11,
+          "num_correct_total": 8
+        },
+        {
+          "task_id": "HumanEval/17",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 15,
+          "num_correct_total": 10
         },
         {
           "task_id": "HumanEval/30",
@@ -3242,18 +3263,11 @@
           "num_correct_total": 8
         },
         {
-          "task_id": "HumanEval/31",
+          "task_id": "HumanEval/35",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/17",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 21,
-          "num_correct_total": 13
         },
         {
           "task_id": "HumanEval/34",
@@ -3263,25 +3277,11 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/13",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/33",
+          "task_id": "HumanEval/31",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/35",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/36",
@@ -3291,21 +3291,7 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/27",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/37",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/39",
+          "task_id": "HumanEval/24",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3313,6 +3299,20 @@
         },
         {
           "task_id": "HumanEval/40",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/33",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 9,
+          "num_correct_total": 7
+        },
+        {
+          "task_id": "HumanEval/32",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3336,42 +3336,35 @@
           "task_id": "HumanEval/41",
           "dataset": "humaneval",
           "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/37",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 11,
+          "num_correct_total": 8
+        },
+        {
+          "task_id": "HumanEval/44",
+          "dataset": "humaneval",
+          "oracle_solved": true,
           "num_candidates_total": 7,
           "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/46",
+          "task_id": "HumanEval/45",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/47",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/32",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/48",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/1",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
           "num_correct_total": 5
         },
         {
@@ -3382,28 +3375,28 @@
           "num_correct_total": 10
         },
         {
-          "task_id": "HumanEval/2",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 5
-        },
-        {
           "task_id": "HumanEval/49",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/53",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/45",
+          "task_id": "HumanEval/51",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/52",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/53",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3417,25 +3410,25 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/51",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
-        },
-        {
-          "task_id": "HumanEval/58",
+          "task_id": "HumanEval/54",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/44",
+          "task_id": "HumanEval/56",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 6
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/50",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/59",
@@ -3445,7 +3438,7 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/50",
+          "task_id": "HumanEval/58",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3466,25 +3459,25 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/64",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/54",
+          "task_id": "HumanEval/62",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 7,
           "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/62",
+          "task_id": "HumanEval/63",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/64",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/66",
@@ -3501,11 +3494,11 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/63",
+          "task_id": "HumanEval/27",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
+          "num_candidates_total": 13,
+          "num_correct_total": 8
         },
         {
           "task_id": "HumanEval/68",
@@ -3525,8 +3518,36 @@
           "task_id": "HumanEval/70",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 7,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/71",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/39",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 11,
+          "num_correct_total": 7
+        },
+        {
+          "task_id": "HumanEval/46",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 11,
           "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/47",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 11,
+          "num_correct_total": 4
         },
         {
           "task_id": "HumanEval/73",
@@ -3543,35 +3564,14 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/18",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 17,
-          "num_correct_total": 10
-        },
-        {
-          "task_id": "HumanEval/72",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
-        },
-        {
           "task_id": "HumanEval/77",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/78",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/79",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3585,25 +3585,11 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/56",
+          "task_id": "HumanEval/79",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 4
-        },
-        {
-          "task_id": "HumanEval/57",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
+          "num_candidates_total": 7,
           "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/83",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/81",
@@ -3613,7 +3599,7 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/85",
+          "task_id": "HumanEval/83",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3627,28 +3613,21 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/87",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/52",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/86",
+          "task_id": "HumanEval/85",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 7,
           "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/90",
+          "task_id": "HumanEval/86",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/87",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3658,32 +3637,39 @@
           "task_id": "HumanEval/88",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/71",
+          "task_id": "HumanEval/72",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 11,
-          "num_correct_total": 4
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/18",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 23,
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/89",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/91",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/93",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/75",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 7
-        },
-        {
-          "task_id": "HumanEval/95",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3697,11 +3683,18 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/97",
+          "task_id": "HumanEval/95",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/90",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/96",
@@ -3711,17 +3704,24 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/98",
+          "task_id": "HumanEval/57",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
+          "num_candidates_total": 21,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/76",
+          "task_id": "HumanEval/75",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 11,
+          "num_candidates_total": 17,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/99",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
@@ -3732,18 +3732,32 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/99",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
           "task_id": "HumanEval/65",
           "dataset": "humaneval",
           "oracle_solved": true,
+          "num_candidates_total": 21,
+          "num_correct_total": 4
+        },
+        {
+          "task_id": "HumanEval/98",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/103",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/76",
+          "dataset": "humaneval",
+          "oracle_solved": true,
           "num_candidates_total": 17,
-          "num_correct_total": 8
+          "num_correct_total": 4
         },
         {
           "task_id": "HumanEval/104",
@@ -3751,13 +3765,6 @@
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/100",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
         },
         {
           "task_id": "HumanEval/105",
@@ -3774,13 +3781,6 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/91",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 6
-        },
-        {
           "task_id": "HumanEval/107",
           "dataset": "humaneval",
           "oracle_solved": true,
@@ -3788,24 +3788,24 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/89",
+          "task_id": "HumanEval/109",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 4
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/108",
+          "task_id": "HumanEval/102",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 7,
           "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/109",
+          "task_id": "HumanEval/97",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
+          "num_candidates_total": 7,
           "num_correct_total": 5
         },
         {
@@ -3816,21 +3816,14 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/82",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 13,
-          "num_correct_total": 7
-        },
-        {
-          "task_id": "HumanEval/113",
+          "task_id": "HumanEval/114",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/116",
+          "task_id": "HumanEval/113",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3844,18 +3837,25 @@
           "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/110",
+          "task_id": "HumanEval/117",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/102",
+          "task_id": "HumanEval/116",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 8
+          "num_candidates_total": 7,
+          "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/115",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/120",
@@ -3865,28 +3865,21 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/117",
+          "task_id": "HumanEval/121",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/118",
+          "task_id": "HumanEval/82",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 19,
+          "num_correct_total": 10
         },
         {
           "task_id": "HumanEval/122",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/115",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 9,
@@ -3896,18 +3889,18 @@
           "task_id": "HumanEval/119",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/123",
+          "task_id": "HumanEval/118",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/125",
+          "task_id": "HumanEval/124",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3921,42 +3914,56 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/128",
+          "task_id": "HumanEval/127",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/114",
+          "task_id": "HumanEval/123",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/129",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/100",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 13,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/131",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/110",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 11,
-          "num_correct_total": 8
+          "num_correct_total": 4
         },
         {
           "task_id": "HumanEval/92",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 15,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/130",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
+          "num_candidates_total": 17,
+          "num_correct_total": 4
         },
         {
           "task_id": "HumanEval/133",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/131",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -3970,28 +3977,35 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/129",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/132",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/103",
+          "task_id": "HumanEval/108",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 11,
           "num_correct_total": 6
         },
         {
+          "task_id": "HumanEval/134",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
           "task_id": "HumanEval/139",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/128",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/132",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -4005,39 +4019,11 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/127",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
           "task_id": "HumanEval/142",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
           "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/138",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/144",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/134",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
         },
         {
           "task_id": "HumanEval/143",
@@ -4047,39 +4033,46 @@
           "num_correct_total": 6
         },
         {
-          "task_id": "HumanEval/147",
+          "task_id": "HumanEval/141",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/125",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/146",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/121",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
           "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/145",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/149",
+          "task_id": "HumanEval/147",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/138",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 7,
           "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/144",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/151",
@@ -4089,6 +4082,13 @@
           "num_correct_total": 5
         },
         {
+          "task_id": "HumanEval/150",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 6
+        },
+        {
           "task_id": "HumanEval/152",
           "dataset": "humaneval",
           "oracle_solved": true,
@@ -4096,18 +4096,11 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/124",
+          "task_id": "HumanEval/146",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 11,
+          "num_candidates_total": 7,
           "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/136",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
         },
         {
           "task_id": "HumanEval/153",
@@ -4118,34 +4111,6 @@
         },
         {
           "task_id": "HumanEval/154",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/158",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/141",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 6
-        },
-        {
-          "task_id": "HumanEval/159",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 5,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/161",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 5,
@@ -4159,25 +4124,67 @@
           "num_correct_total": 5
         },
         {
-          "task_id": "HumanEval/162",
+          "task_id": "HumanEval/149",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 7,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/136",
           "dataset": "humaneval",
           "oracle_solved": true,
           "num_candidates_total": 7,
           "num_correct_total": 6
+        },
+        {
+          "task_id": "HumanEval/159",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/130",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 13,
+          "num_correct_total": 8
         },
         {
           "task_id": "HumanEval/156",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 7
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/161",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/162",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
+        },
+        {
+          "task_id": "HumanEval/160",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/163",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 7,
-          "num_correct_total": 6
+          "num_candidates_total": 5,
+          "num_correct_total": 5
         },
         {
           "task_id": "HumanEval/148",
@@ -4187,121 +4194,152 @@
           "num_correct_total": 8
         },
         {
-          "task_id": "HumanEval/155",
+          "task_id": "HumanEval/158",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 9,
-          "num_correct_total": 5
-        },
-        {
-          "task_id": "HumanEval/150",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 4
-        },
-        {
-          "task_id": "HumanEval/160",
-          "dataset": "humaneval",
-          "oracle_solved": true,
-          "num_candidates_total": 11,
-          "num_correct_total": 7
+          "num_candidates_total": 7,
+          "num_correct_total": 6
         },
         {
           "task_id": "HumanEval/137",
           "dataset": "humaneval",
           "oracle_solved": true,
-          "num_candidates_total": 21,
-          "num_correct_total": 5
+          "num_candidates_total": 15,
+          "num_correct_total": 7
+        },
+        {
+          "task_id": "HumanEval/155",
+          "dataset": "humaneval",
+          "oracle_solved": true,
+          "num_candidates_total": 13,
+          "num_correct_total": 7
         }
       ],
       "anomalies": []
     },
     "error_analysis": {
       "agent": "Error Analysis Agent",
-      "total_errors": 255,
+      "total_errors": 263,
       "distribution": {
         "syntax_error": {
-          "count": 204,
-          "percentage": 80.0
+          "count": 200,
+          "percentage": 76.04562737642586
         },
         "runtime_type": {
-          "count": 44,
-          "percentage": 17.254901960784313
+          "count": 42,
+          "percentage": 15.96958174904943
+        },
+        "timeout": {
+          "count": 5,
+          "percentage": 1.9011406844106464
+        },
+        "logical_error": {
+          "count": 7,
+          "percentage": 2.6615969581749046
         },
         "runtime_value": {
-          "count": 7,
-          "percentage": 2.7450980392156863
+          "count": 9,
+          "percentage": 3.4220532319391634
         }
       },
       "aggregated_distribution": {
         "SYNTAX": {
-          "count": 204,
-          "percentage": 80.0
+          "count": 200,
+          "percentage": 76.04562737642586
         },
         "RUNTIME": {
           "count": 51,
-          "percentage": 20.0
+          "percentage": 19.39163498098859
         },
         "LOGICAL": {
-          "count": 0,
-          "percentage": 0.0
+          "count": 7,
+          "percentage": 2.6615969581749046
         },
         "TIMEOUT": {
-          "count": 0,
-          "percentage": 0.0
+          "count": 5,
+          "percentage": 1.9011406844106464
         }
       },
       "repairability": {
         "syntax_error": {
-          "total": 204,
-          "repaired": 0,
-          "repair_rate": 0.0
+          "total": 200,
+          "repaired": 80,
+          "repair_rate": 40.0
         },
         "runtime_type": {
-          "total": 44,
-          "repaired": 0,
-          "repair_rate": 0.0
+          "total": 42,
+          "repaired": 37,
+          "repair_rate": 88.09523809523809
+        },
+        "timeout": {
+          "total": 5,
+          "repaired": 1,
+          "repair_rate": 20.0
+        },
+        "logical_error": {
+          "total": 7,
+          "repaired": 1,
+          "repair_rate": 14.285714285714285
         },
         "runtime_value": {
-          "total": 7,
-          "repaired": 0,
-          "repair_rate": 0.0
+          "total": 9,
+          "repaired": 2,
+          "repair_rate": 22.22222222222222
         }
       },
       "most_fixable_types": [
         {
-          "type": "syntax_error",
-          "total": 204,
-          "repaired": 0,
-          "repair_rate": 0.0
+          "type": "runtime_type",
+          "total": 42,
+          "repaired": 37,
+          "repair_rate": 88.09523809523809
         },
         {
-          "type": "runtime_type",
-          "total": 44,
-          "repaired": 0,
-          "repair_rate": 0.0
+          "type": "syntax_error",
+          "total": 200,
+          "repaired": 80,
+          "repair_rate": 40.0
         },
         {
           "type": "runtime_value",
+          "total": 9,
+          "repaired": 2,
+          "repair_rate": 22.22222222222222
+        },
+        {
+          "type": "timeout",
+          "total": 5,
+          "repaired": 1,
+          "repair_rate": 20.0
+        },
+        {
+          "type": "logical_error",
           "total": 7,
-          "repaired": 0,
-          "repair_rate": 0.0
+          "repaired": 1,
+          "repair_rate": 14.285714285714285
         }
       ],
       "per_dataset": {
         "humaneval": {
           "syntax_error": {
-            "count": 204,
-            "percentage": 80.0
+            "count": 200,
+            "percentage": 76.04562737642586
           },
           "runtime_type": {
-            "count": 44,
-            "percentage": 17.254901960784313
+            "count": 42,
+            "percentage": 15.96958174904943
+          },
+          "timeout": {
+            "count": 5,
+            "percentage": 1.9011406844106464
+          },
+          "logical_error": {
+            "count": 7,
+            "percentage": 2.6615969581749046
           },
           "runtime_value": {
-            "count": 7,
-            "percentage": 2.7450980392156863
+            "count": 9,
+            "percentage": 3.4220532319391634
           }
         }
       },
@@ -4313,18 +4351,18 @@
         "humaneval": {
           "num_problems": 164,
           "pass_at_k_before_repair": {
-            "pass@1": 0.8499999999999999,
-            "pass@5": 0.975609756097561,
+            "pass@1": 0.8426829268292683,
+            "pass@5": 0.9634146341463414,
             "pass@10": null
           },
           "pass_at_k_after_repair": {
-            "pass@1": 0.9951219512195121,
+            "pass@1": 0.9902439024390243,
             "pass@5": 1.0,
             "pass@10": null
           },
           "oracle_upper_bound": 1.0,
           "oracle_solve_rate": 100.0,
-          "avg_score": 0.85
+          "avg_score": 0.8443554006968642
         }
       },
       "anomalies": []
@@ -4334,73 +4372,73 @@
       "accuracy_vs_k": [
         {
           "k": 1,
-          "accuracy": 0.8499999999999999,
-          "avg_latency": 0.817717620032334,
-          "efficiency": 1.0394786405194367
+          "accuracy": 0.8426829268292683,
+          "avg_latency": 0.8748627893662182,
+          "efficiency": 0.9632172462606826
         },
         {
           "k": 2,
-          "accuracy": 0.9396341463414634,
-          "avg_latency": 1.635435240064668,
-          "efficiency": 0.5745468382498036
+          "accuracy": 0.929268292682927,
+          "avg_latency": 1.7497255787324364,
+          "efficiency": 0.5310937349136327
         },
         {
           "k": 3,
-          "accuracy": 0.9603658536585366,
-          "avg_latency": 2.4531528600970023,
-          "efficiency": 0.39148227135775054
+          "accuracy": 0.949390243902439,
+          "avg_latency": 2.6245883680986544,
+          "efficiency": 0.36172919740180487
         },
         {
           "k": 5,
-          "accuracy": 0.975609756097561,
-          "avg_latency": 4.088588100161671,
-          "efficiency": 0.23861776539900986
+          "accuracy": 0.9634146341463414,
+          "avg_latency": 4.374313946831091,
+          "efficiency": 0.22024359610591585
         },
         {
           "k": 8,
           "accuracy": null,
-          "avg_latency": 6.541740960258672,
+          "avg_latency": 6.998902314929746,
           "efficiency": null
         },
         {
           "k": 10,
           "accuracy": null,
-          "avg_latency": 8.177176200323341,
+          "avg_latency": 8.748627893662182,
           "efficiency": null
         }
       ],
       "accuracy_vs_repair_rounds": [
         {
           "repair_rounds": 0,
-          "accuracy": 0.8499999999999999,
-          "avg_latency": 4.088588100161671,
+          "accuracy": 0.8426829268292683,
+          "avg_latency": 4.374313946831091,
           "marginal_gain": 0.0
         },
         {
           "repair_rounds": 1,
-          "accuracy": 0.9743902439024391,
-          "avg_latency": 6.543750312358209,
-          "marginal_gain": 0.12439024390243925
+          "accuracy": 0.9670731707317073,
+          "avg_latency": 7.065786082081415,
+          "marginal_gain": 0.12439024390243902
         },
         {
           "repair_rounds": 2,
-          "accuracy": 0.9951219512195121,
-          "avg_latency": 8.998912524554747,
-          "marginal_gain": 0.020731707317072967
+          "accuracy": 0.9902439024390243,
+          "avg_latency": 9.757258217331737,
+          "marginal_gain": 0.023170731707316983
         },
         {
           "repair_rounds": 3,
-          "accuracy": 0.9951219512195121,
-          "avg_latency": 11.454074736751286,
+          "accuracy": 0.9902439024390243,
+          "avg_latency": 12.44873035258206,
           "marginal_gain": 0.0
         }
       ],
       "optimal_operating_point": {
         "best_k": {
           "k": 1,
-          "accuracy": 0.8499999999999999,
-          "avg_latency": 0.817717620032334,
-          "efficiency": 1.0394786405194367
+          "accuracy": 0.8426829268292683,
+          "avg_latency": 0.8748627893662182,
+          "efficiency": 0.9632172462606826
         },
         "optimal_repair_rounds": 2
       },

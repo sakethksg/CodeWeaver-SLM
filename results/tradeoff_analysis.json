@@ -3,73 +3,73 @@
   "accuracy_vs_k": [
     {
       "k": 1,
-      "accuracy": 0.8499999999999999,
-      "avg_latency": 0.817717620032334,
-      "efficiency": 1.0394786405194367
+      "accuracy": 0.8426829268292683,
+      "avg_latency": 0.8748627893662182,
+      "efficiency": 0.9632172462606826
     },
     {
       "k": 2,
-      "accuracy": 0.9396341463414634,
-      "avg_latency": 1.635435240064668,
-      "efficiency": 0.5745468382498036
+      "accuracy": 0.929268292682927,
+      "avg_latency": 1.7497255787324364,
+      "efficiency": 0.5310937349136327
     },
     {
       "k": 3,
-      "accuracy": 0.9603658536585366,
-      "avg_latency": 2.4531528600970023,
-      "efficiency": 0.39148227135775054
+      "accuracy": 0.949390243902439,
+      "avg_latency": 2.6245883680986544,
+      "efficiency": 0.36172919740180487
     },
     {
       "k": 5,
-      "accuracy": 0.975609756097561,
-      "avg_latency": 4.088588100161671,
-      "efficiency": 0.23861776539900986
+      "accuracy": 0.9634146341463414,
+      "avg_latency": 4.374313946831091,
+      "efficiency": 0.22024359610591585
     },
     {
       "k": 8,
       "accuracy": null,
-      "avg_latency": 6.541740960258672,
+      "avg_latency": 6.998902314929746,
       "efficiency": null
     },
     {
       "k": 10,
       "accuracy": null,
-      "avg_latency": 8.177176200323341,
+      "avg_latency": 8.748627893662182,
       "efficiency": null
     }
   ],
   "accuracy_vs_repair_rounds": [
     {
       "repair_rounds": 0,
-      "accuracy": 0.8499999999999999,
-      "avg_latency": 4.088588100161671,
+      "accuracy": 0.8426829268292683,
+      "avg_latency": 4.374313946831091,
       "marginal_gain": 0.0
     },
     {
       "repair_rounds": 1,
-      "accuracy": 0.9743902439024391,
-      "avg_latency": 6.543750312358209,
-      "marginal_gain": 0.12439024390243925
+      "accuracy": 0.9670731707317073,
+      "avg_latency": 7.065786082081415,
+      "marginal_gain": 0.12439024390243902
     },
     {
       "repair_rounds": 2,
-      "accuracy": 0.9951219512195121,
-      "avg_latency": 8.998912524554747,
-      "marginal_gain": 0.020731707317072967
+      "accuracy": 0.9902439024390243,
+      "avg_latency": 9.757258217331737,
+      "marginal_gain": 0.023170731707316983
     },
     {
       "repair_rounds": 3,
-      "accuracy": 0.9951219512195121,
-      "avg_latency": 11.454074736751286,
+      "accuracy": 0.9902439024390243,
+      "avg_latency": 12.44873035258206,
       "marginal_gain": 0.0
     }
   ],
   "optimal_operating_point": {
     "best_k": {
       "k": 1,
-      "accuracy": 0.8499999999999999,
-      "avg_latency": 0.817717620032334,
-      "efficiency": 1.0394786405194367
+      "accuracy": 0.8426829268292683,
+      "avg_latency": 0.8748627893662182,
+      "efficiency": 0.9632172462606826
     },
     "optimal_repair_rounds": 2
   },

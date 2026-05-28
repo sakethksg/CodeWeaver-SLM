@@ -1,88 +1,126 @@
 {
   "agent": "Error Analysis Agent",
-  "total_errors": 255,
+  "total_errors": 263,
   "distribution": {
     "syntax_error": {
-      "count": 204,
-      "percentage": 80.0
+      "count": 200,
+      "percentage": 76.04562737642586
     },
     "runtime_type": {
-      "count": 44,
-      "percentage": 17.254901960784313
+      "count": 42,
+      "percentage": 15.96958174904943
+    },
+    "timeout": {
+      "count": 5,
+      "percentage": 1.9011406844106464
+    },
+    "logical_error": {
+      "count": 7,
+      "percentage": 2.6615969581749046
     },
     "runtime_value": {
-      "count": 7,
-      "percentage": 2.7450980392156863
+      "count": 9,
+      "percentage": 3.4220532319391634
     }
   },
   "aggregated_distribution": {
     "SYNTAX": {
-      "count": 204,
-      "percentage": 80.0
+      "count": 200,
+      "percentage": 76.04562737642586
     },
     "RUNTIME": {
       "count": 51,
-      "percentage": 20.0
+      "percentage": 19.39163498098859
     },
     "LOGICAL": {
-      "count": 0,
-      "percentage": 0.0
+      "count": 7,
+      "percentage": 2.6615969581749046
     },
     "TIMEOUT": {
-      "count": 0,
-      "percentage": 0.0
+      "count": 5,
+      "percentage": 1.9011406844106464
     }
   },
   "repairability": {
     "syntax_error": {
-      "total": 204,
-      "repaired": 0,
-      "repair_rate": 0.0
+      "total": 200,
+      "repaired": 80,
+      "repair_rate": 40.0
     },
     "runtime_type": {
-      "total": 44,
-      "repaired": 0,
-      "repair_rate": 0.0
+      "total": 42,
+      "repaired": 37,
+      "repair_rate": 88.09523809523809
+    },
+    "timeout": {
+      "total": 5,
+      "repaired": 1,
+      "repair_rate": 20.0
+    },
+    "logical_error": {
+      "total": 7,
+      "repaired": 1,
+      "repair_rate": 14.285714285714285
     },
     "runtime_value": {
-      "total": 7,
-      "repaired": 0,
-      "repair_rate": 0.0
+      "total": 9,
+      "repaired": 2,
+      "repair_rate": 22.22222222222222
     }
   },
   "most_fixable_types": [
     {
-      "type": "syntax_error",
-      "total": 204,
-      "repaired": 0,
-      "repair_rate": 0.0
+      "type": "runtime_type",
+      "total": 42,
+      "repaired": 37,
+      "repair_rate": 88.09523809523809
     },
     {
-      "type": "runtime_type",
-      "total": 44,
-      "repaired": 0,
-      "repair_rate": 0.0
+      "type": "syntax_error",
+      "total": 200,
+      "repaired": 80,
+      "repair_rate": 40.0
     },
     {
       "type": "runtime_value",
+      "total": 9,
+      "repaired": 2,
+      "repair_rate": 22.22222222222222
+    },
+    {
+      "type": "timeout",
+      "total": 5,
+      "repaired": 1,
+      "repair_rate": 20.0
+    },
+    {
+      "type": "logical_error",
       "total": 7,
-      "repaired": 0,
-      "repair_rate": 0.0
+      "repaired": 1,
+      "repair_rate": 14.285714285714285
     }
   ],
   "per_dataset": {
     "humaneval": {
       "syntax_error": {
-        "count": 204,
-        "percentage": 80.0
+        "count": 200,
+        "percentage": 76.04562737642586
       },
       "runtime_type": {
-        "count": 44,
-        "percentage": 17.254901960784313
+        "count": 42,
+        "percentage": 15.96958174904943
+      },
+      "timeout": {
+        "count": 5,
+        "percentage": 1.9011406844106464
+      },
+      "logical_error": {
+        "count": 7,
+        "percentage": 2.6615969581749046
       },
       "runtime_value": {
-        "count": 7,
-        "percentage": 2.7450980392156863
+        "count": 9,
+        "percentage": 3.4220532319391634
       }
     }
   },

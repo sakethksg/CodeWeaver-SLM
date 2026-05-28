@@ -4,18 +4,18 @@
     "humaneval": {
       "num_problems": 164,
       "pass_at_k_before_repair": {
-        "pass@1": 0.8499999999999999,
-        "pass@5": 0.975609756097561,
+        "pass@1": 0.8426829268292683,
+        "pass@5": 0.9634146341463414,
         "pass@10": null
       },
       "pass_at_k_after_repair": {
-        "pass@1": 0.9951219512195121,
+        "pass@1": 0.9902439024390243,
         "pass@5": 1.0,
         "pass@10": null
       },
       "oracle_upper_bound": 1.0,
       "oracle_solve_rate": 100.0,
-      "avg_score": 0.85
+      "avg_score": 0.8443554006968642
     }
   },
   "anomalies": []
